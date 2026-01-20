@@ -1,0 +1,48 @@
+{
+  "name": "ingo-s/ingo-s-open-mind-culture-theme",
+  "description": "Ingo's Open Mind Culture Theme",
+  "type": "shopware-platform-plugin",
+  "version": "1.0.0",
+  "license": "proprietary",
+  "require": {
+    "shopware/core": "^6.5.0",
+    "shopware/storefront": "*"
+  },
+  "minimum-stability": "RC",
+  "autoload": {
+    "psr-4": {
+      "IngoSOpenMindCultureTheme\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "IngoSOpenMindCultureTheme\\IngoSOpenMindCultureTheme",
+    "label": {
+      "de-DE": "IngoSOpenMindCultureTheme",
+      "en-GB": "IngoSOpenMindCultureTheme"
+    },
+    "description": {
+      "en-GB": "Ingo's Open Mind Culture Theme is a custom theme for Shopware 6.",
+      "de-DE": "Ingo's Open Mind Culture Theme ist ein individuelles Theme für Shopware 6"
+    },
+    "manufacturerLink": {
+      "en-GB": "https://www.ingo-steinke.de/\"",
+      "de-DE": "https://www.ingo-steinke.de/\""
+    },
+    "supportLink": {
+      "en-GB": "https://www.ingo-steinke.de/",
+      "de-DE": "https://www.ingo-steinke.de/"
+    }
+  },
+  "authors": [
+    {
+      "name": "IngoS",
+      "role": "Manufacturer",
+      "homepage": "https://www.ingo-steinke.de/"
+    }
+  ],
+  "config": {
+    "allow-plugins": {
+      "symfony/runtime": true
+    }
+  }
+}
