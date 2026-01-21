@@ -8,6 +8,14 @@ Theme style and layout are inspired by the Open Mind Culture WordPress blog and 
 
 The development enviroment is hased on [Ingo's Masonry Theme](https://github.com/openmindculture/sw-IngoSMasonryTheme) and [Ingo's Cost Transparency](https://github.com/openmindculture/sw-IngoSCostTransparency) extension, based on my [Shopware 6 Theme/Plugin Development Template](https://github.com/openmindculture/IngoSDev6CertPrep), using the Dockware docker-compose setup. Note that the older theme projects might be deprecated.
 
+### Theme Code vs CMS Layout
+
+Modern Shopware 6 (6.4+) favors no-code Shopping Experiences with dynamic product listing/slider blocks sourcing featured products from rule-based groups—fully configurable in admin without touching storefront/component files. Shopware 6 CMS records (Shopping Experiences layouts, blocks, pages) persist in the database and must be exported/imported separately from theme files during deployment.
+
+See the section about [Backup/Export/Deployment](#backup-export-deployment) below.
+
+Layouts, products and media (images) for the Open Mind Culture shop are stored in the `/data` directory of this repository. Installable theme release files are in `/dist`.
+
 ## Development
 
 Install and activate the theme in the localhost storefront as a live preview. Some changes, like modified content of existing twig template files, are effective immediately after browser reload.
@@ -113,3 +121,33 @@ So we can zip our src/IngoSOpenMindCultureTheme directory.
 We can still use `sw-cli` to validate our extension archive:
 
 - `shopware-cli extension validate ./custom/plugins/IngoSOpenMindCultureTheme.zip`
+
+<a name="backup-export-deployment" id="backup-export-deployment"></a>
+### Backup/Export/Deployment
+
+#### CMS JSON Export
+
+Run these commands on the preview server to export CMS data as JSON files:
+
+`./bin/console dal:export:layout --all > layouts.json` (layouts/shopping experiences)
+
+`./bin/console cms:export --directory=var/export/cms/` (full CMS structure including pages/sections)
+
+These files are placed alongside theme assets in the `/data` directory in this deployment repository .
+
+### Plugin Data and Settings Export/Import
+
+Custom fields added to products export automatically in standard product CSV, but plugin-specific data like settings from extensions (e.g., [Cost Transparency](https://store.shopware.com/en/ingos57544164693f/cost-transparency.html) adding supply chain price breakdown fields to products) is stored in the database as custom field sets, entity extensions, or plugin config tables. Export them using `./bin/console dal:export:entity --entity app.config --all > plugin-configs.json` on the source server. Import with `./bin/console dal:import:entity plugin-configs.json` on the target server.
+
+#### Product Catalog Export/Import
+
+- Settings → Import/Export → Products profile → Download CSV
+- Rsync/SCP `/public/media` folder to live server
+- Upload CSV → Match columns → Start import
+
+#### Production Deployment and Data Import 
+
+Deploy the theme using `bin/console` or the admin theme manager.
+
+Import CMS: `./bin/console dal:import:layout layouts.json` or `./bin/console cms:import var/export/cms/`
+
