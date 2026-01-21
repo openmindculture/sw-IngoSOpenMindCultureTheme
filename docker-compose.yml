@@ -1,8 +1,6 @@
-version: "3"
-
 services:
   masonry:
-    container_name: masonry
+    container_name: theme
     image: dockware/dev:latest
     ports:
       - "22:22"     # ssh

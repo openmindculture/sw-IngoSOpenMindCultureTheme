@@ -2,20 +2,23 @@
 
 ## sw-IngoSOpenMindCultureTheme
 
-A Shopware 6 theme used for my Open Mind Culture shop to match the existing theme of the [Open Mind Culture blog](https://www.open-mind-culture.org) to experiment and showcase frontend customization possibilities while maintaining performance, sustainability, and accessibility.
+A Shopware 6 theme used for my Open Mind Culture shop to match the existing theme of the [Open Mind Culture blog](https://www.open-mind-culture.org) to experiment and showcase frontend customization possibilities while maintaining performance, sustainability, SEO and accessibility.
 
-Content and style are partially inspired by potential customers' requirements.
+Theme style and layout are inspired by the Open Mind Culture WordPress blog and its modified fasto theme. This is a work in progress. This theme project might serve as a blueprint for future Shopware 6 themes. No warranty. License: proprietary.
 
- - masonry layout for product grid view
- - apricot color palette
- - web fonts
- - ...
-
-The development enviroment is hased on [Ingo's Masonry Theme](https://github.com/openmindculture/sw-IngoSMasonryTheme) and [Ingo's Cost Transparency](https://github.com/openmindculture/sw-IngoSCostTransparency) extension, based on my [Shopware 6 Theme/Plugin Development Template](https://github.com/openmindculture/IngoSDev6CertPrep), using the Dockware docker-compose setup.
+The development enviroment is hased on [Ingo's Masonry Theme](https://github.com/openmindculture/sw-IngoSMasonryTheme) and [Ingo's Cost Transparency](https://github.com/openmindculture/sw-IngoSCostTransparency) extension, based on my [Shopware 6 Theme/Plugin Development Template](https://github.com/openmindculture/IngoSDev6CertPrep), using the Dockware docker-compose setup. Note that the older theme projects might be deprecated.
 
 ## Development
 
-### Dockware Development Environment
+Install and activate the theme in the localhost storefront as a live preview. Some changes, like modified content of existing twig template files, are effective immediately after browser reload.
+
+Changes in compiled asset sources require recompilation:
+
+`bin/console cache:clear && bin/console theme:compile`
+
+before reloading the storefont in the browser.
+
+### Setup Dockware Development Environment
 
 The localhost setup is based on the lastest  [dockware](https://docs.dockware.io/)  dev image. We don't need no parent project container repository anymore! `custom/plugins` is now mounted to the project `src` directory as recommended in the official examples.
 
@@ -30,24 +33,24 @@ The localhost setup is based on the lastest  [dockware](https://docs.dockware.io
 
 ### Enter the Container Shell
 
-- `docker exec -it masonry bash`
+- `docker exec -it theme bash`
 
 You will start in the Shopware project root `/var/www/html` where you can type console commands like
 `bin/console plugin:create foobar`
 to create a new plugin structure.
 
+When reusing existing code, you might need to grant access permissions explicitly:
+- `sudo chmod ugo+rwx /var/www/html/custom/plugins/IngoSOpenMindCultureTheme/src/Resources/app/storefront/dist/`
+
 - use IngoSOpenMindCultureTheme in the storefront and for development
   - `bin/console plugin:refresh`
   - `bin/console plugin:install --activate IngoSOpenMindCultureTheme`
+  - `bin/console cache:clear`
+  - `bin/console bundle:dump`
+  - `bin/build-storefront.sh`
   - `bin/console theme:refresh`
   - `bin/console theme:compile`
   - `bin/console theme:change`
-
-#### Useful Console Commands
-
-- `bin/build-storefront.sh`
-- `bin/console cache:clear`
-- `bin/console theme:refresh`
 
 #### Optional Verbose vs. Silent Switches
 
@@ -69,6 +72,8 @@ Scripts seem to output verbose warnings by default. Add `--no-debug` to suppress
 ### Shopware Logs in Dockware
 
 - `/var/www/html/var/log`
+
+Too see the latest: `tail /var/www/html/var/log/dev.log`
 
 #### System Logs in Dockware
 
