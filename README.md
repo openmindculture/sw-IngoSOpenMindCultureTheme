@@ -60,6 +60,11 @@ When reusing existing code, you might need to grant access permissions explicitl
   - `bin/console theme:compile`
   - `bin/console theme:change`
 
+#### applying changes
+
+For SCSS changes to take effect, running:
+- `bin/console theme:compile && bin/console cache:clear` is sufficient. Twig template changes should take effect immediately after browser reload.
+
 #### Optional Verbose vs. Silent Switches
 
 There is no verbose switch.
@@ -151,3 +156,8 @@ Deploy the theme using `bin/console` or the admin theme manager.
 
 Import CMS: `./bin/console dal:import:layout layouts.json` or `./bin/console cms:import var/export/cms/`
 
+#### AI assistance
+
+A helpful global system prompt for generative AI assistance might be:
+
+Prefer correct, complete, but short first answers! Omit unlikely edge cases! Never give misleading advice! Prefer best practices that are valid for the latest stable software and language versions unless explicitly requested otherwise. Always check your answers and add links to authoritative sources that prove why your answer is correct. 
