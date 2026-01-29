@@ -10,18 +10,83 @@
 @import 'pagelet/header';
 @import 'todo';
 
+/**
+ * @license
+ * MyFonts Webfont Build ID 4424710, 2022-03-05T04:06:47-0500
+ *
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are
+ * explicitly restricted from using the Licensed Webfonts(s).
+ *
+ * You may obtain a valid license at the URLs below.
+ *
+ * Webfont: LiebeRuth-Regular by LiebeFonts
+ * URL: https://www.myfonts.com/fonts/liebe-fonts/liebe-ruth/regular/
+ * Copyright: Copyright © 2013 by Ulrike Wilhelm. All rights reserved.
+ *
+ * Webfont: HealthyFreakRegular by Vozzy
+ * URL: https://www.myfonts.com/fonts/vozzy/healthy-freak/regular/
+ *
+ *
+ *
+ * © 2022 MyFonts Inc
+*/
+
 @font-face {
-  font-family: 'Climate Crisis';
-  src: url('#{$my-asset-path}/fonts/ClimateCrisis-Regular-VariableFont_YEAR') format('woff2');
-  font-style: normal;
-  font-weight: 400;
+  font-family: 'HealthyFreakRegular';
+  src: url('#{$app-css-relative-asset-path}/fonts/HealthyFreakRegular.woff2') format('woff2');
   font-display: swap;
 }
 
-h1,h2,h3,h4,h5 {
-  font-family: "Climate Crisis", sans-serif;
+@font-face {
+  font-family: "LiebeRuth-Regular";
+  src: url('#{$app-css-relative-asset-path}/fonts/LiebeRuthRegular.woff2') format('woff2');
+  font-display: swap;
+}
+
+body  {
+  color: #383d4f; /* refactor using variables */
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 32px;
+}
+
+nav,
+.navbar-nav,
+.product-detail-description-text,
+{
+  color: #383d4f; /* refactor using variables */
+  font-family: LiebeRuth-Regular, Montserrat, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 32px;
+}
+
+h1 {
+  font-family: HealthyFreakRegular, Montserrat, Arial, sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-variation-settings: "YEAR" 1979;
+}
+
+/* TODO refactor and move to typograhpy component file */
+
+body #fasto-reader-mode-target:target h1,
+body #fasto-reader-mode-target:target h2,
+body #fasto-reader-mode-target:target h3,
+body #fasto-reader-mode-target:target h4,
+body #fasto-reader-mode-target:target h5,
+body.fasto-reader-mode h1,
+body.fasto-reader-mode h2,
+body.fasto-reader-mode h3,
+body.fasto-reader-mode h4,
+body.fasto-reader-mode h5 {
+  font-family: LiebeRuth-Regular, serif;
+  font-weight: bold;
+}
+
+body #fasto-reader-mode-target:target article p,
+body.fasto-reader-mode article p {
+  font-size: 18px;
 }
