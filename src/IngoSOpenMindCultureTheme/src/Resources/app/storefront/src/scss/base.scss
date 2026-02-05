@@ -1,3 +1,6 @@
+/* optional explicit variables import for better code inspection */
+@import 'abstract/variables';
+
 /*
  * Libraries
  * ---------- */
@@ -45,11 +48,12 @@
 }
 
 body  {
-  color: #383d4f; /* refactor using variables */
+  color: $ingos-color-orange;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: normal;
   line-height: 32px;
+
 }
 
 nav,
@@ -63,14 +67,31 @@ nav,
   line-height: 32px;
 }
 
-h1 {
+h1,
+.ingos-header-logo-text {
   font-family: HealthyFreakRegular, Montserrat, Arial, sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+  text-decoration: none;
 }
 
-/* TODO refactor and move to typograhpy component file */
+.ingos-header-logo-text {
+  font-size: 42px;
+}
+
+.header-logo-main-link {
+  color: #000;
+  text-decoration: none;
+}
+
+.header-logo-main-link:hover,
+.header-logo-main-link:focus {
+  color: $ingos-color-green-dark;
+  text-decoration: none;
+}
+
+/* TODO refactor and move to typography component file */
 
 body #fasto-reader-mode-target:target h1,
 body #fasto-reader-mode-target:target h2,
@@ -89,4 +110,27 @@ body.fasto-reader-mode h5 {
 body #fasto-reader-mode-target:target article p,
 body.fasto-reader-mode article p {
   font-size: 18px;
+}
+
+// TODO move to more appropriate modules
+// don't override bs-breakpoint in $grid-breakpoints where 1440px came from
+// because we want to keep the breakpoint system just make the container smaller
+.cms-section .boxed {
+  max-width: 1060px;
+}
+// TODO override templates so that we don't have 4 cols but 3 cols
+// cms-section-default boxed
+// cms-block  pos-3 cms-block-product-listing position-relative
+// cms-block-container
+// cms-block-container-row row cms-row
+// col-12
+// cms-element-product-listing-wrapper
+// cms-element-product-listing
+// row cms-listing-row js-listing-wrapper
+// cms-listing-col col-sm-6 col-lg-4 col-xl-3
+// TODO remove workaround when no longer needed
+@media (min-width: 1060px) {
+.cms-section .boxed .cms-element-product-listing .cms-listing-col {
+width: 33%;
+}
 }

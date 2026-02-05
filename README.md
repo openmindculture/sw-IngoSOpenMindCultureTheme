@@ -6,7 +6,7 @@ A Shopware 6 theme used for my Open Mind Culture shop to match the existing them
 
 Theme style and layout are inspired by the Open Mind Culture WordPress blog and its modified fasto theme. This is a work in progress. This theme project might serve as a blueprint for future Shopware 6 themes. No warranty. License: proprietary.
 
-The development enviroment is hased on [Ingo's Masonry Theme](https://github.com/openmindculture/sw-IngoSMasonryTheme) and [Ingo's Cost Transparency](https://github.com/openmindculture/sw-IngoSCostTransparency) extension, based on my [Shopware 6 Theme/Plugin Development Template](https://github.com/openmindculture/IngoSDev6CertPrep), using the Dockware docker-compose setup. Note that the older theme projects might be deprecated.
+The development environment is based on [Ingo's Masonry Theme](https://github.com/openmindculture/sw-IngoSMasonryTheme) and [Ingo's Cost Transparency](https://github.com/openmindculture/sw-IngoSCostTransparency) extension, based on my [Shopware 6 Theme/Plugin Development Template](https://github.com/openmindculture/IngoSDev6CertPrep), using the Dockware docker-compose setup. Note that the older theme projects might be deprecated.
 
 ### Theme Code vs CMS Layout
 
@@ -22,9 +22,9 @@ Install and activate the theme in the localhost storefront as a live preview. So
 
 Changes in compiled asset sources require recompilation:
 
-`bin/console cache:clear && bin/console theme:compile`
+`bin/console theme:compile && bin/console cache:clear`
 
-before reloading the storefont in the browser.
+before reloading the storefront in the browser.
 
 ### Setup Dockware Development Environment
 
@@ -155,6 +155,18 @@ Custom fields added to products export automatically in standard product CSV, bu
 Deploy the theme using `bin/console` or the admin theme manager.
 
 Import CMS: `./bin/console dal:import:layout layouts.json` or `./bin/console cms:import var/export/cms/`
+
+#### Shopware 6 Best Practices and Takeaways
+
+- Consistent SCSS and CSS class name prefixing: use lowercased vendor id as css class name prefix to generate compact yet unique class names, e.g. `swag` (for Shopware AG) or `ingos` for `IngoS` but no need for a wordy preifx like `ingo-open-mind-culture-theme`.
+
+- Palette theming: Override just the base color variables like `$sw-color-brand-primary` for fixed colors and fonts as part of a brand identity. Use  custom properties. Use SCSS variables, not custom CSS properties. Let Shopware propagate the base colors: Many specific variables like `$cms-element-text-quotes-color` will inherit from these base colors automatically. Only define theme config fields in `theme.json` when you want admin editability.
+- [Override Shopware's default Bootstrap variables](https://developer.shopware.com/docs/guides/plugins/themes/override-bootstrap-variables-in-a-theme.html) in `/src/Resources/app/storefront/src/scss/overrides.scss`. Only add variable overrides in this file, no CSS class styling. Ensure that `"app/storefront/src/scss/overrides.scss"` comes before `"@Storefront"` in the `"style"` section in `themes.json`. Don't use `abstract/_variables.scss` to override Shopware's default Bootstrap SCSS variables in a custom Shopware 6 theme.
+  - For better code inspection and coding assistance move the actual overrides to `abstract/_variables.scss` and import it both in `overrides.scss` and (redundantly) in `base.scss`.
+  - To make IDE inspection recognize default parent storefront variables, add the Shopware code as a Resource Root. Download the Shopware source or mount it explicitly in the Docker compose setup so that the IDE can access it.
+
+- To trace a compiled frontend value back to its origin, enable additional debug output or search within the Shopware platform source code. Like a CSS rule value might derive from a bootstrap variable.
+  - Check out the [Shopware 6 platform storefront source from GitHub](https://github.com/shopware/storefront/tree/trunk) locally and search for partial strings. Avoid copying or linking it into the same project to prevent misleading search results in some IDE setups.
 
 #### AI assistance
 

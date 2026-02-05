@@ -1,6 +1,7 @@
 {% sw_extends '@Storefront/storefront/layout/header/logo.html.twig' %}
 
 {% block layout_header_logo_image %}
-    {{ parent() }}
-    <span class="ingos-open-mind-culture-theme-site-title">{{ 'header.logoLink'|trans|striptags }}</span>
+<span class="ingos-header-logo-text d-block m-auto">
+{{ config('core.basicInformation.shopName') }}
+</span>
 {% endblock %}

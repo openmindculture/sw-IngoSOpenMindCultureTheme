@@ -11,7 +11,7 @@ services:
       - "9999:9999" # watch storefront
       - "3306:3306" # mysql port
     volumes:
-      - "./src:/var/www/html/custom/plugins"
+      - ./src:/var/www/html/custom/plugins
     networks:
       - web
     environment:

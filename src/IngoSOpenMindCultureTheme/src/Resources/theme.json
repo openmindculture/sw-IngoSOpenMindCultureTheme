@@ -24,15 +24,6 @@
     "app/storefront/src/assets"
   ],
   "previewMedia": "app/storefront/src/assets/ThemePreview.png",
-  "sw-logo-favicon": {
-    "label": {
-      "en-GB": "Favicon",
-      "de-DE": "Favicon"
-    },
-    "type": "media",
-    "value": "app/storefront/dist/assets/favicon.png",
-    "editable": true,
-    "block": "media",
-    "order": 500
+  "config": {
   }
 }

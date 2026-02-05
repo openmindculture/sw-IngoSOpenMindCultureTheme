@@ -1,0 +1,15 @@
+$font-family-base: 'my-font', Helvetica, Arial, sans-serif;
+$headings-font-family: 'my-font', Helvetica, Arial, sans-serif;
+
+$my-asset-path: '#{$sw-asset-theme-url}/bundles/mytheme/assets' !default;
+
+$sw-color-brand-primary: #114791; // similar to default #3b82f6
+$sw-color-brand-secondary: #563a6a; // similar to default #8b5cf6
+$sw-text-color: #000000; // default #1f2937
+$sw-border-color: #e0e0e0; // default #e5e7eb
+// TODO rename semantically
+$ingos-color-background-aside: #383d4f;
+$ingos-color-yellow: #ebc036;
+$ingos-color-green-dark: #577b2e;
+$ingos-color-spring-green: #8Bc34a;
+$ingos-color-orange: #ff7c34;

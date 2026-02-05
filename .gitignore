@@ -2,6 +2,7 @@
 docker-compose.override.yml
 node_modules
 vendor
+dist
 .vscode
 .idea
 Thumbs.db
