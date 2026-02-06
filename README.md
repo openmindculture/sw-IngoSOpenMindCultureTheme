@@ -104,9 +104,9 @@ Too see the latest: `tail /var/www/html/var/log/dev.log`
 
 - then "mark directory as" -> "sources root"
 
-### Extension Export and Verification
+## Theme Export, Verification and Deployment
 
-Last but not least, you can build an exportable zip archive file to upload into a shop backend or Shopware's plugin marketplace.
+Build an exportable zip archive file to upload into a shop backend or Shopware's plugin marketplace.
 
 There is an optional Shopware CLI that is not included in Dockware. You can get it from
 [sw-cli.fos.gg](https://sw-cli.fos.gg) and use the `extension` command to build a theme archive using all files:
@@ -114,7 +114,7 @@ There is an optional Shopware CLI that is not included in Dockware. You can get 
 - `shopware-cli extension zip ./custom/plugins/IngoSOpenMindCultureTheme --disable-git --output-directory .`
 
 But this will include the `vendor` directory and produce a huge file, so we must either use a git (release) branch,
-or create a zip manually.
+**or create a zip manually**.
 
 Expected structure inside the zip file `IngoSOpenMindCultureTheme.zip`:
 `IngoSOpenMindCultureTheme/`
@@ -128,9 +128,9 @@ We can still use `sw-cli` to validate our extension archive:
 - `shopware-cli extension validate ./custom/plugins/IngoSOpenMindCultureTheme.zip`
 
 <a name="backup-export-deployment" id="backup-export-deployment"></a>
-### Backup/Export/Deployment
+## Data Backup/Export/Deployment
 
-#### CMS JSON Export
+### CMS JSON Export
 
 Run these commands on the preview server to export CMS data as JSON files:
 

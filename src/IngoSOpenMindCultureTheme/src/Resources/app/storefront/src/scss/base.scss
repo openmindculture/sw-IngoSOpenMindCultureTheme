@@ -47,13 +47,13 @@
   font-display: swap;
 }
 
-body  {
-  color: $ingos-color-orange;
-  font-family: Helvetica, Arial, sans-serif;
+body {
+  background-color: $sw-border-color;
+  color: $sw-text-color;
+  font-family: $font-family-base;
   font-size: 16px;
   font-weight: normal;
   line-height: 32px;
-
 }
 
 nav,
@@ -115,9 +115,53 @@ body.fasto-reader-mode article p {
 // TODO move to more appropriate modules
 // don't override bs-breakpoint in $grid-breakpoints where 1440px came from
 // because we want to keep the breakpoint system just make the container smaller
-.cms-section .boxed {
-  max-width: 1060px;
+
+.header-main {
+  margin-top: 48px; // TODO use variable and/or rem
+  z-index: 100; // over subsequent to show drop shadow
 }
+
+.header-main,
+.nav-main,
+.container-main,
+.footer-main > .container {
+  max-width: 1060px;
+  width: min(100%, 1060px);
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fff;
+  box-shadow: -1px 0px 16px 0px rgba(0, 0, 0, 0.07);
+}
+
+.nav-main,
+.container-main {
+  clip-path: inset(0 -20px 0 -20px);
+}
+
+.container-main {
+  padding-top: 0;
+}
+
+.footer-main {
+  margin-bottom: 48px; // TODO use variable and/or rem
+}
+
+.footer-main > .container {
+  background-color: $sw-text-color;
+  color: $sw-border-color;
+}
+
+.footer-main .footer-service-menu-list.blank, // TODO set class in twig
+.footer-main .footer-service-menu-list:blank {
+  display: none;
+}
+
+.footer-bottom {
+  background-color: $sw-border-color;
+  color: $sw-text-color;
+  font-family: $font-family-serif;
+}
+
 // TODO override templates so that we don't have 4 cols but 3 cols
 // cms-section-default boxed
 // cms-block  pos-3 cms-block-product-listing position-relative
