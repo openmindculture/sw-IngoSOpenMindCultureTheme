@@ -1,16 +1,19 @@
 $font-family-base: Montserrat, Helvetica, Arial, sans-serif;
-$font-family-serif: 'LiebeRuth-Regular', Helvetica, Arial, sans-serif;
+// TODO harmonize also in OMC wp-fasto-child use serif fallback fonts:
+$font-family-serif: 'LiebeRuth-Regular', Montserrat, Arial, sans-serif;
 $headings-font-family: Montserrat, Helvetica, Arial, sans-serif;
 $headings-font-family-playful: 'LiebeRuth-Regular', Helvetica, Arial, sans-serif;
 
 $my-asset-path: '#{$sw-asset-theme-url}/bundles/mytheme/assets' !default;
 
-$sw-color-brand-primary: #114791; // similar to default #3b82f6
-$sw-color-brand-secondary: #563a6a; // similar to default #8b5cf6
-$sw-text-color: #000000; // default #1f2937
-$sw-border-color: #e0e0e0; // default #e5e7eb
+$sw-color-brand-primary: #563a6a;
+$sw-color-brand-secondary: #577b2e;
+$sw-text-color: #383d4f;
+$sw-border-color: #e0e0e0;
 // TODO rename semantically
 $ingos-color-background-dark: #383d4f;
+$ingos-color-blueish-dark: #114791;
+$ingos-color-purple-dark: #563a6a;
 $ingos-color-yellow: #ebc036;
 $ingos-color-green-dark: #577b2e;
 $ingos-color-spring-green: #8Bc34a;

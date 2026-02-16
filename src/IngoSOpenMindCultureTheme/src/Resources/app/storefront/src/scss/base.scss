@@ -47,6 +47,28 @@
   font-display: swap;
 }
 
+a,
+a:link,
+a:visited {
+  color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
+}
+
+.product-name,
+.header-logo-main-link,
+.product-name:link,
+.header-logo-main-link:link,
+.product-name:visited,
+.header-logo-main-link:visited {
+  color: $sw-text-color;
+}
+
+.product-name:hover,
+.product-name:focus,
+a:hover,
+a:focus {
+  color: rgba(var(--bs-link-hover-color-rgb), var(--bs-link-opacity, 1));
+}
+
 body {
   background-color: $sw-border-color;
   color: $sw-text-color;
@@ -60,8 +82,8 @@ nav,
 .navbar-nav,
 .product-detail-description-text,
 {
-  color: #383d4f; /* refactor using variables */
-  font-family: LiebeRuth-Regular, Montserrat, Arial, sans-serif;
+  color: $sw-text-color;
+  font-family: $font-family-serif;
   font-size: 16px;
   font-weight: normal;
   line-height: 32px;
