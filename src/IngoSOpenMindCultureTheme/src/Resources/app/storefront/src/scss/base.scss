@@ -140,6 +140,7 @@ body.fasto-reader-mode article p {
 
 .header-main {
   margin-top: 48px; // TODO use variable and/or rem
+  border-radius: 5px 5px 0 0;
   z-index: 100; // over subsequent to show drop shadow
 }
 
@@ -164,13 +165,30 @@ body.fasto-reader-mode article p {
   padding-top: 0;
 }
 
-.footer-main {
-  margin-bottom: 48px; // TODO use variable and/or rem
+.footer-main > .container {
+  background-color: $ingos-color-background-black;
+  border-radius: 0 0 5px 5px;
+  color: $ingos-color-white;
+  font-family: $font-family-serif;
+  font-size: 1rem;
 }
 
-.footer-main > .container {
-  background-color: $sw-text-color;
-  color: $sw-border-color;
+.footer-main > .container a,
+.footer-main > .container a:link,
+.footer-main > .container a:visited {
+  border: solid 1px $sw-border-color;
+  border-radius: 5px;
+  color: $ingos-color-white;
+  font-size: var(--bs-nav-link-font-size);
+  text-decoration: none;
+  line-height: 1em;
+  padding: 5px 10px;
+}
+
+.footer-main > .container a:hover,
+.footer-main > .container a:focus {
+  background-color: $ingos-color-white;
+  color: $sw-color-brand-secondary;
 }
 
 .footer-main .footer-service-menu-list.blank, // TODO set class in twig
@@ -178,10 +196,24 @@ body.fasto-reader-mode article p {
   display: none;
 }
 
+// TODO change footer content in twig instead
+// and display categories and possibly curated fixed or editable links
+.footer-main .footer-column:first-child {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100% !important;
+  justify-content: space-around;
+}
+
 .footer-bottom {
   background-color: $sw-border-color;
   color: $sw-text-color;
   font-family: $font-family-serif;
+}
+
+.footer-bottom .footer-vat p {
+  margin-bottom: 0;
 }
 
 // TODO override templates so that we don't have 4 cols but 3 cols
