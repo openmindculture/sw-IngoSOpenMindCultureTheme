@@ -191,7 +191,68 @@ body.fasto-reader-mode article p {
   color: $sw-color-brand-secondary;
 }
 
-.footer-main .footer-service-menu-list.blank, // TODO set class in twig
+// hide unused or irrelevant items
+.filter-panel-wrapper .filter-multi-select-manufacturer {
+  display: none;
+}
+
+// Assuming that the Open Mind Shop MUST always stay simple
+// thus not use abundant product criteria
+// we can force a
+// more compact layout aligning filters and sorting in one visual row.
+// We can always set a max width to the filter wrapper as it can do flex wrap.
+// Filter dropdowns are not rendered unless they have at least one value.
+// ^ TODO move this as plain text to README documentation.
+// min. = only 1 price filter, max = infinite number of filter dropdowns?
+// a) mobile offcanvas
+// b) wide screen desktop >= lg:  992px Bootstrap breakpoint
+// @media (min-width: 992px) {
+
+@include media-breakpoint-up(lg) {
+  .filter-panel-items-container {
+    max-width: calc(100% - 200px);
+  }
+  .cms-element-product-listing-actions {
+    justify-content: flex-end;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    margin-top: -90px; // does this make sense? Why? better generic value? TODO
+    // prevent stealing interactivity from overlapped filters...
+    pointer-events: none;
+  }
+  // ...and re-enable only for visually non-overlapping child element:
+  .sorting[data-listing-sorting],
+  .sorting.form-select {
+    pointer-events: auto;
+    min-width: unset;
+    max-width: min-content;
+    width: auto; // assume < 200px for default EN/DE sorting dropdown
+  }
+  .cms-element-product-listing-actions-row
+  .cms-element-product-listing-actions .col-md-auto:last-child {
+    padding-right: 0;
+  }
+  .cms-block-sidebar-filter .cms-block-container-row {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+}
+
+
+// more compact layout sacrificing table consistency
+
+.product-cheapest-price:empty,
+.product-cheapest-price:not(:has(.product-cheapest-price-price)),
+.product-price-unit.empty,
+.product-price-unit:empty,
+.product-price-unit:blank,
+.product-variant-characteristics.empty,
+.product-variant-characteristics:empty,
+.product-variant-characteristics:blank,
+.footer-main .footer-service-menu-list.empty,
+.footer-main .footer-service-menu-list:empty,
 .footer-main .footer-service-menu-list:blank {
   display: none;
 }
@@ -227,8 +288,21 @@ body.fasto-reader-mode article p {
 // row cms-listing-row js-listing-wrapper
 // cms-listing-col col-sm-6 col-lg-4 col-xl-3
 // TODO remove workaround when no longer needed
-@media (min-width: 1060px) {
-.cms-section .boxed .cms-element-product-listing .cms-listing-col {
-width: 33%;
-}
+// TODO refactor using BS Bootstrap Breakpoint
+@include media-breakpoint-up(lg) {
+  .cms-element-product-listing .cms-listing-row {
+    column-gap: var(--bs-gutter-x);
+    row-gap: var(--bs-gutter-y);
+    justify-content: space-between;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cms-section .boxed .cms-element-product-listing .cms-listing-col {
+    width: 33%;
+    width: calc(33% - var(--bs-gutter-x));
+    padding-left: 0;
+    padding-right: 0;
+
+  }
 }
