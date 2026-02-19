@@ -2,7 +2,7 @@
 
 {% block component_product_box_price_unit %}
     {% set blockContent %}{{ parent() }}{% endset %}
-    {% if blockContent|trim %}
+    {% if blockContent|striptags|trim %}
         {{ blockContent }}
         {% else %}
         <span class="price-unit skipped empty component_product_box_price_unit"

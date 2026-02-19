@@ -8,6 +8,12 @@ Theme style and layout are inspired by the Open Mind Culture WordPress blog and 
 
 The development environment is based on [Ingo's Masonry Theme](https://github.com/openmindculture/sw-IngoSMasonryTheme) and [Ingo's Cost Transparency](https://github.com/openmindculture/sw-IngoSCostTransparency) extension, based on my [Shopware 6 Theme/Plugin Development Template](https://github.com/openmindculture/IngoSDev6CertPrep), using the Dockware docker-compose setup. Note that the older theme projects might be deprecated.
 
+### Shopware 6 Development Best Practices
+
+Beyond documented and proven best practices for Shopware 6 frontend development using SCSS styling, twig templating and theme configuration, this code base serves as a living library of working Shopware 6 theme code. Beware of [Shopware 6 changes since the academy training videos](https://dev.to/ingosteinke/shopware-changes-since-the-60-dev-training-videos-481o) or any other learning path or documentation.
+
+Further reading: [Shopware dev productivity and plugin validation](https://dev.to/ingosteinke/shopware-dev-productivity-and-plugin-validation-14jm). Also check out [Cost Transparency](https://store.shopware.com/en/ingos57544164693f/cost-transparency.html) by [Ingo Steinke](https://store.shopware.com/en/ingos57544164693f/cost-transparency.html#hook-manufacturer) and the source code at [github.com/openmindculture/sw-IngoSCostTransparency](https://github.com/openmindculture/sw-IngoSCostTransparency) for an evergreen Shopware 6 extension example.
+
 ### Theme Code vs CMS Layout
 
 Modern Shopware 6 (6.4+) favors no-code Shopping Experiences with dynamic product listing/slider blocks sourcing featured products from rule-based groups—fully configurable in admin without touching storefront/component files. Shopware 6 CMS records (Shopping Experiences layouts, blocks, pages) persist in the database and must be exported/imported separately from theme files during deployment.
@@ -16,11 +22,13 @@ See the section about [Backup/Export/Deployment](#backup-export-deployment) belo
 
 Layouts, products and media (images) for the Open Mind Culture shop are stored in the `/data` directory of this repository. Installable theme release files are in `/dist`.
 
+Changes in theme code can be done via `composer.json`, `theme.json` configuration, overriding global variables or custom properties in `overrides.scss` or an imported `abstract/variables` and SCSS styling in `base.scss`. When overriding themes, prefer higher level components said to be less likely to change, use `sw_extends` to extend the original file and only override the blocks that need to change. Prefer adding wrappers or additional code and include the original `{{ parent() }}` instead of copying storefront platform code preventing upcoming Shopware core updates. 
+
 ## Development
 
-Install and activate the theme in the localhost storefront as a live preview. Some changes, like modified content of existing twig template files, are effective immediately after browser reload.
+Install and activate the theme in the localhost storefront as a live preview. Some changes, like modified content of existing twig template files, are effective immediately, or after clearing the cache and after browser reload.
 
-Changes in compiled asset sources require recompilation:
+Changes in compiled asset sources, like SCSS code files, require recompilation
 
 `bin/console theme:compile && bin/console cache:clear`
 
