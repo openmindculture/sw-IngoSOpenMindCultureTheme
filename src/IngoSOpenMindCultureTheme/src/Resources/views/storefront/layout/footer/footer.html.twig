@@ -1,25 +1,8 @@
 {% sw_extends '@Storefront/storefront/layout/footer/footer.html.twig' %}
 
-{% block layout_footer_navigation %}
-
-
-        {% set navigationTree = sw_navigation(
-            context.salesChannel.navigationCategoryId,
-            context,
-            1
-        ) %}
-
-    <ul class="footer-top-categories">
-        {% for item in navigationTree %}
-            <li>one
-                <a href="{{ path('frontend.navigation.page', { navigationId: item.category.id }) }}">
-                    {{ item.category.translated.name }}
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
-    {{ parent() }}
+{% block layout_footer_navigation_information_content %}layout_footer_navigation_information_contentgit c
 {% endblock %}
 
 {% block layout_footer_navigation_hotline %}
+    {{ parent() }}
 {% endblock %}
