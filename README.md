@@ -70,6 +70,10 @@ When reusing existing code, you might need to grant access permissions explicitl
   - `bin/console theme:compile`
   - `bin/console theme:change`
 
+and for linting Twig code:
+
+  - `bin/console lint:twig custom/plugins/IngoSOpenMindCultureTheme/src/Resources/views/`
+
 #### applying changes
 
 For SCSS changes to take effect, running:

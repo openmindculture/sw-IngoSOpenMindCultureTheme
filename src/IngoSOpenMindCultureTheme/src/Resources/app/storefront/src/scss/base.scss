@@ -47,6 +47,8 @@
   font-display: swap;
 }
 
+// TODO move styles to appropriate partials
+
 a,
 a:link,
 a:visited {
@@ -242,18 +244,18 @@ body.fasto-reader-mode article p {
 
 
 // more compact layout sacrificing table consistency
+// Never combine possibly unsupported selectors!
+// When you have a comma-separated selector list with an invalid selector, the ENTIRE rule is discarded. Source: MDN: "A downside to using a selector list is that a single unsupported selector in the selector list invalidates the entire rule."
+// https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/Selector_list#invalid_selector_list
 
 .product-cheapest-price:empty,
 .product-cheapest-price:not(:has(.product-cheapest-price-price)),
 .product-price-unit.empty,
 .product-price-unit:empty,
-.product-price-unit:blank,
 .product-variant-characteristics.empty,
 .product-variant-characteristics:empty,
-.product-variant-characteristics:blank,
 .footer-main .footer-service-menu-list.empty,
-.footer-main .footer-service-menu-list:empty,
-.footer-main .footer-service-menu-list:blank {
+.footer-main .footer-service-menu-list:empty {
   display: none;
 }
 
@@ -305,4 +307,8 @@ body.fasto-reader-mode article p {
     padding-right: 0;
 
   }
+}
+
+.exception-summary h1 {
+  font-family: $font-family-base !important;
 }
