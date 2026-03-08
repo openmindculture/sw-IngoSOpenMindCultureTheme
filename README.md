@@ -12,6 +12,8 @@ The development environment is based on [Ingo's Masonry Theme](https://github.co
 
 Beyond documented and proven best practices for Shopware 6 frontend development using SCSS styling, twig templating and theme configuration, this code base serves as a living library of working Shopware 6 theme code. Beware of [Shopware 6 changes since the academy training videos](https://dev.to/ingosteinke/shopware-changes-since-the-60-dev-training-videos-481o) or any other learning path or documentation.
 
+Check the chapter about [theme code and deployment performance optimization](#theme-code-deployment-performance-optimization).
+
 Further reading: [Shopware dev productivity and plugin validation](https://dev.to/ingosteinke/shopware-dev-productivity-and-plugin-validation-14jm). Also check out [Cost Transparency](https://store.shopware.com/en/ingos57544164693f/cost-transparency.html) by [Ingo Steinke](https://store.shopware.com/en/ingos57544164693f/cost-transparency.html#hook-manufacturer) and the source code at [github.com/openmindculture/sw-IngoSCostTransparency](https://github.com/openmindculture/sw-IngoSCostTransparency) for an evergreen Shopware 6 extension example.
 
 ### Theme Code vs CMS Layout
@@ -175,6 +177,85 @@ Import CMS: `./bin/console dal:import:layout layouts.json` or `./bin/console cms
 
 - To trace a compiled frontend value back to its origin, enable additional debug output or search within the Shopware platform source code. Like a CSS rule value might derive from a bootstrap variable.
   - Check out the [Shopware 6 platform storefront source from GitHub](https://github.com/shopware/storefront/tree/trunk) locally and search for partial strings. Avoid copying or linking it into the same project to prevent misleading search results in some IDE setups.
+
+<a name="theme-code-deployment-performance-optimization"></a>
+#### Theme Code and Deployment Performance Optimization
+
+The safest and most effective measures proven and recommended to improve frontend web performance.
+
+Ensure production mode when compiling and strip unused default JavaScript and SCSS cod to unregister unused resources.
+
+##### Performance by Default since Shopware 6.7
+
+The PluginManager now determines if the selector from register() is present in the current document, and only if it is will the JS plugin be fetched GitHub — meaning manual deregister() calls are largely redundant in 6.6+, because plugins that have no matching DOM elements simply won't be downloaded at all. Shopware 6.7 Replaces Webpack with Vite, further reducing JS and CSS payloads by about 25% compared to earlier Shopware 6 webpack builds.
+
+In Shopware 6.7, `PluginManager.deregister()` is essentially pointless.
+
+In priority order, the proven highest-impact measures are:
+
+1. HTTP Caching with Varnish — enabling Varnish showed orders per second increase of 108% in Shopware's own benchmarks. Shopware No frontend optimisation comes close to this.
+
+2. Separate personalised content via Ajax — separating static from personalised content and loading user-specific elements via Ajax Shopware is what makes Varnish caching viable for logged-in users and cart pages, which are otherwise uncacheable.
+
+3. LCP-focused image optimisation — the hero image should be delivered as WebP/AVIF with fetchpriority="high" and <link rel="preload">, and TTFB should be under 200ms through optimised hosting and caching, with no render-blocking scripts in <head> before the LCP element.
+
+4. Upgrading to 6.6 or 6.7 — if still on 6.5 or earlier, the single most effective "frontend optimisation" is the version upgrade itself, since async JS loading is a platform feature, not something you can retrofit cleanly.
+
+##### Identify Resources Safe to Remove
+
+Identify resources promising relevant optimization gain and safe to remove consistently across all relevant page types across the whole storefront, including login, cart and checkout.
+
+The key advantage of a single long recording session spanning all page types is that a plugin used on checkout but not on the homepage accumulates its "used" coverage when you navigate to checkout — so you won't falsely flag it as removable.
+
+### Recommended Dev Audit Workflow
+
+1. APP_ENV=dev bin/console theme:compile
+2. Start watcher / dev server
+3. Open Coverage tab → Start recording
+4. Navigate through: homepage → PDP → cart → checkout → login
+   (do this in a single recording session to accumulate cross-page coverage)
+5. Stop recording → export results
+6. Red-highlighted code = unused across your entire recorded session
+7. Cross-reference with PluginManager console dump to confirm safe removal
+
+##### Production Build
+
+Prepend an explicit environment setting, independent of the current context,  to ensure you are building for production, to trigger Tree Shaking and Minification, for removing dead code when running bin/console theme:compile to compile a custom Shopware 6 theme:
+
+- `APP_ENV=prod bin/console theme:compile`
+
+##### Exclude Resources in theme.json
+
+The most straightforward and official way to exclude scripts/styles is the `theme.json` configuration file.
+
+...
+
+##### Disable Bootstrap or Storefront SCSS Features
+
+By default, the Storefront SCSS includes everything. You can disable specific Bootstrap features using flags in your `overrides.scss`.
+
+Path: `src/Resources/app/storefront/src/scss/overrides.scss`
+
+```scss
+   // Disable Bootstrap features you don't need
+   $enable-rounded: false;
+   $enable-gradients: false;
+   $enable-shadows: false;
+   $enable-grid-classes: true; // Set to false if using CSS Grid exclusively
+   $enable-caret: false;
+```
+
+##### Unregister JS Plugins
+   Shopware registers many JS plugins (e.g., CookiePermission, SearchWidget) by default. You can deregister them in your theme's entry point to prevent them from initializing and potentially save execution time.
+
+   Path: `src/Resources/app/storefront/src/main.js`
+
+```js
+   const PluginManager = window.PluginManager;
+   // Unregister by name and selector
+   PluginManager.deregister('CookiePermission', '[data-cookie-configuration-button]');
+   PluginManager.deregister('ZoomModal', '[data-zoom-modal]');
+```
 
 #### AI assistance
 
