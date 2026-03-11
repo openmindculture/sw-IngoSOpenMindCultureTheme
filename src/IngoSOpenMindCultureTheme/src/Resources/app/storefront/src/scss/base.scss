@@ -307,6 +307,10 @@ body.fasto-reader-mode article p {
   margin-bottom: 0;
 }
 
+.footer-copyright-user {
+  text-align: center;
+}
+
 // TODO override templates so that we don't have 4 cols but 3 cols
 // cms-section-default boxed
 // cms-block  pos-3 cms-block-product-listing position-relative
@@ -355,6 +359,10 @@ body.fasto-reader-mode article p {
   */
 }
 
+.ingos-footer-navigation-wrapper {
+  padding-top: 50px;
+}
+
 .footer-main .list-unstyled:empty {
   display: none;
 }
@@ -364,6 +372,9 @@ body.fasto-reader-mode article p {
 .footer-main .footer-column:first-child {
   display: block !important;
   width: auto !important;
+  border: none;
+  margin: 0;
+  padding-top: 0;
 }
 
 .exception-summary h1 {

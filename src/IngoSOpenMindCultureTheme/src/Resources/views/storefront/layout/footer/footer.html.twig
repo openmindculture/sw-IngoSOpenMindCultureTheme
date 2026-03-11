@@ -15,6 +15,12 @@
     </div>
 {% endblock %}
 
+{% block layout_footer_copyright %}
+    <div class="footer-copyright-user">Copyright ©{{ "now"|date("Y") }} <a href="https://www.open-mind-culture.org"> Open Mind Culture</a> -
+        <a href="https://www.ingo-steinke.de/" target="_blank">Ingo Steinke</a></div>
+    {{ parent() }}
+{% endblock %}
+
 {% block layout_footer_navigation_information_content %}
 {% endblock %}
 
@@ -25,4 +31,7 @@
 {% endblock %}
 
 {% block layout_footer_payment_shipping_logos %}
+{% endblock %}
+
+{% block layout_footer_service_menu %}
 {% endblock %}
