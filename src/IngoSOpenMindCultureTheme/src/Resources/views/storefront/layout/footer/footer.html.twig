@@ -1,8 +1,23 @@
 {% sw_extends '@Storefront/storefront/layout/footer/footer.html.twig' %}
 
-{% block layout_footer_navigation_information_content %}layout_footer_navigation_information_contentgit c
-{% endblock %}
 
-{% block layout_footer_navigation_hotline %}
+{% block layout_footer_navigation %}
     {{ parent() }}
+        {% set footerCategories = page.extensions.footerCategories %}
+        <div
+                id="footerColumns"
+                class="row footer-columns"
+                data-collapse-footer-columns="true"
+                role="list"
+        >foo
+        {% if footerCategories %}bar
+            <ul>
+                {% for item in footerCategories.tree %}
+                    <li><a href="{{ item.url }}">{{ item.translated.name }}</a></li>
+                {% endfor %}
+            </ul>
+        {% else %}none
+        {% endif %}
+        baz
+        </div>
 {% endblock %}
