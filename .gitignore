@@ -11,3 +11,6 @@ Desktop.ini
 .DS_Store
 sw_platform_src
 src/SwagExtensionStore
+Shopware-storefront-src
+data/dump.sql
+data/public
