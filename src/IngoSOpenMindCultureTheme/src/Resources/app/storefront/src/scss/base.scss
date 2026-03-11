@@ -291,7 +291,7 @@ body.fasto-reader-mode article p {
 // cms-listing-col col-sm-6 col-lg-4 col-xl-3
 // TODO remove workaround when no longer needed
 // TODO refactor using BS Bootstrap Breakpoint
-@include media-breakpoint-up(lg) {
+@include media-breakpoint-up(lg) { // 992 <
   .cms-element-product-listing .cms-listing-row {
     column-gap: var(--bs-gutter-x);
     row-gap: var(--bs-gutter-y);
@@ -307,8 +307,27 @@ body.fasto-reader-mode article p {
     padding-right: 0;
 
   }
+
+  // visually merge filters in one row, assuming there are not too many of them
+  // TODO restrict to custom class names?
+  /*
+  .cms-section.pos-0 {
+    position: relative;
+  }
+  .cms-section.pos-0 > :empty {
+    display: none;
+  }
+  .cms-block-product-listing.position-relative:not(.pos-0) {
+    position: absolute;
+    top: 0;
+  }
+  .cms-block-product-listing.position-relative:not(.pos-0) .cms-block-container {
+    padding-top: 0 !important;
+  }
+  */
 }
 
 .exception-summary h1 {
   font-family: $font-family-base !important;
 }
+
