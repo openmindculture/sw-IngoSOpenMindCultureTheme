@@ -2,7 +2,23 @@
 
 
 {% block layout_footer_navigation %}
-    {{ parent() }}
+    <div class="ingos-footer-navigation-wrapper">
+
+        {{ parent() }}
+        <div class="has-borderless-links">
+            <a href="https://www.open-mind-culture.org/439/impressum/#kontakt">Kontakt</a> | <a
+                    href="https://www.open-mind-culture.org/439/impressum/">Impressum</a> | <a
+                    href="https://www.open-mind-culture.org/439/impressum/#datenschutz">Datenschutz</a> | <a
+                    href="https://www.open-mind-culture.org/439/impressum/#barrierefreiheit">Barrierefreiheit</a>
+            | <a href="https://www.open-mind-culture.org/">Blog</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block layout_footer_navigation_information_content %}
+{% endblock %}
+
+{% block layout_footer_navigation_information_icons %}
 {% endblock %}
 
 {% block layout_footer_navigation_hotline %}

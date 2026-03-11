@@ -168,28 +168,56 @@ body.fasto-reader-mode article p {
 }
 
 .footer-main > .container {
+  display: flex;
+  justify-content: center;
   background-color: $ingos-color-background-black;
   border-radius: 0 0 5px 5px;
   color: $ingos-color-white;
   font-family: $font-family-serif;
   font-size: 1rem;
+  padding-bottom: 50px;
 }
 
-.footer-main > .container a,
-.footer-main > .container a:link,
-.footer-main > .container a:visited {
-  border: solid 1px $sw-border-color;
+.footer-main > .container .footer-columns {
+  margin: 0;
+}
+
+.footer-main > .container .footer-columns a,
+.footer-main > .container .footer-columns a:link,
+.footer-main > .container .footer-columns a:visited {
+  border: solid 1px $sw-border-color-dimmed;
   border-radius: 5px;
   color: $ingos-color-white;
   font-size: var(--bs-nav-link-font-size);
   text-decoration: none;
   line-height: 1em;
-  padding: 5px 10px;
+  padding: 0 10px;
 }
 
-.footer-main > .container a:hover,
-.footer-main > .container a:focus {
+.footer-main > .container .footer-columns a:hover,
+.footer-main > .container .footer-columns a:focus {
   background-color: $ingos-color-white;
+  color: $sw-color-brand-secondary;
+}
+
+.footer-main .has-borderless-links {
+  text-align: center;
+}
+
+.footer-main .has-borderless-links a,
+.footer-main .has-borderless-links a:link,
+.footer-main .has-borderless-links a:visited {
+  border: none;
+  padding: 0;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.5;
+  color: $ingos-color-white;
+  text-decoration: underline;
+}
+
+.footer-main .has-borderless-links a:hover,
+.footer-main .has-borderless-links a:focus {
   color: $sw-color-brand-secondary;
 }
 
@@ -231,7 +259,7 @@ body.fasto-reader-mode article p {
     max-width: min-content;
     width: auto; // assume < 200px for default EN/DE sorting dropdown
   }
-  .cms-element-product-listing-actions-row
+  .cms-element-product-listing-actions-row,
   .cms-element-product-listing-actions .col-md-auto:last-child {
     padding-right: 0;
   }
@@ -325,6 +353,17 @@ body.fasto-reader-mode article p {
     padding-top: 0 !important;
   }
   */
+}
+
+.footer-main .list-unstyled:empty {
+  display: none;
+}
+
+.footer-main .footer-column,
+.footer-main .footer-column-headline,
+.footer-main .footer-column:first-child {
+  display: block !important;
+  width: auto !important;
 }
 
 .exception-summary h1 {
