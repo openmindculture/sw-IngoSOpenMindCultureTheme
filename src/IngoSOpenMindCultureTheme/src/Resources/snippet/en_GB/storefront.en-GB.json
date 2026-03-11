@@ -1,0 +1,16 @@
+{
+  "ingos": {
+    "openMindCultureTheme": {
+      "imprint": "Imprint",
+      "imprintUrl": "https://www.open-mind-culture.org/en/1198/imprint/",
+      "contact": "Contact",
+      "contactUrl": "https://www.open-mind-culture.org/en/1198/imprint/#kontakt",
+      "privacy": "Privacy",
+      "privacyUrl": "https://www.open-mind-culture.org/en/1198/imprint/#privacy",
+      "accessibility": "Accessibility",
+      "accessibilityUrl": "https://www.open-mind-culture.org/en/1198/imprint/#accessibility",
+      "blog": "Blog",
+      "blogUrl": "https://www.open-mind-culture.org/en/"
+    }
+  }
+}
