@@ -152,12 +152,14 @@ body.fasto-reader-mode article p {
 // don't override bs-breakpoint in $grid-breakpoints where 1440px came from
 // because we want to keep the breakpoint system just make the container smaller
 
+.header-minimal,
 .header-main {
   margin-top: 48px; // TODO use variable and/or rem
   border-radius: 5px 5px 0 0;
   z-index: 100; // over subsequent to show drop shadow
 }
 
+.header-minimal,
 .header-main,
 .nav-main,
 .container-main,
@@ -294,7 +296,12 @@ body.fasto-reader-mode article p {
     margin-left: auto;
     margin-right: auto;
   }
-
+  .header-minimal-back-to-shop {
+    width: min-content;
+  }
+  .header-minimal-logo {
+    flex-grow: 1;
+  }
 }
 
 
@@ -384,6 +391,10 @@ body.fasto-reader-mode article p {
     padding-top: 0 !important;
   }
   */
+
+  .container-main .checkout {
+    padding: 20px 20px 0 20px;
+  }
 }
 
 .ingos-footer-navigation-wrapper {
@@ -406,5 +417,13 @@ body.fasto-reader-mode article p {
 
 .exception-summary h1 {
   font-family: $font-family-base !important;
+}
+
+.checkout-container a.btn-primary,
+.offcanvas-cart-actions a.btn-primary,
+.register-submit .btn-primary,
+[type="submit"]:not(:disabled) {
+  background-color: $ingos-color-blueish-dark;
+  color: $ingos-color-white;
 }
 
