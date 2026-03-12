@@ -115,7 +115,11 @@ Too see the latest: `tail /var/www/html/var/log/dev.log`
 - If you have the source in another directory already, make a symbolic link to it:
   - `ln -s ../Shopware-storefront-src .`
 
-- then "mark directory as" -> "sources root".
+- add in Settings → PHP → Include Path and mark directory as excluded to keep search results clean. 
+
+#### Platform Source Worakround
+
+If code assistance fails or gives false positive warnings, mark the Shopware platform sources as sources root (like the custom code, which should be the only sources root in theory) via the directory context menu: "mark directory as" -> "sources root". Don't mark it as "excluded" later. Use scoped search results, like search below directory, instead. A directory cannot be both excluded and the sources root at the same time in PhpStorm. The later excluded state reverts the sources status and strips the indexing. At least his worked for me with Shopware 6.7 in PhpStorm 2024.2.5 (242) on Linux with PHP 8.2 and PHP 8.3 in 2026.
 
 To initialize and update everything, run `composer install && bin/console theme:refresh` inside the Docker container's main directory, `/var/www/html` and, if necessary, invalidate caches in the PhpStorm file menu and restart the IDE.
 
