@@ -93,11 +93,12 @@ nav,
 
 h1,
 .ingos-header-logo-text {
-  font-family: HealthyFreakRegular, Montserrat, Arial, sans-serif;
+  font-family: $headings-font-family-freaky;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
   text-decoration: none;
+  display: inline;
 }
 
 .ingos-header-logo-text {
@@ -106,6 +107,8 @@ h1,
 
 .header-logo-main-link {
   color: #000;
+  display: flex;
+  gap: 15px;
   text-decoration: none;
 }
 
@@ -113,6 +116,15 @@ h1,
 .header-logo-main-link:focus {
   color: $ingos-color-green-dark;
   text-decoration: none;
+}
+
+.ingos-header-logo-textsite-description {
+  font-size: 11px;
+  font-weight: normal;
+  font-family: $font-family-serif;
+  text-transform: uppercase;
+  padding: 0;
+  margin: 0;
 }
 
 /* TODO refactor and move to typography component file */
@@ -180,6 +192,9 @@ body.fasto-reader-mode article p {
 
 .footer-main > .container .footer-columns {
   margin: 0;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
 }
 
 .footer-main > .container .footer-columns a,
@@ -237,6 +252,18 @@ body.fasto-reader-mode article p {
 // a) mobile offcanvas
 // b) wide screen desktop >= lg:  992px Bootstrap breakpoint
 // @media (min-width: 992px) {
+
+// todo refactor add custom class in twig
+.filter-panel-item-toggle {
+  z-index: 2;
+  position: relative;
+  pointer-events: auto;
+}
+
+// todo refactor add custom class in twig
+.cms-block-sidebar-filter.pos-2 .col-12 {
+  padding-left: 0;
+}
 
 @include media-breakpoint-up(lg) {
   .filter-panel-items-container {
