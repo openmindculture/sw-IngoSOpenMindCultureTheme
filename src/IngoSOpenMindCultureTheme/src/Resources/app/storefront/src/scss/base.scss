@@ -425,5 +425,9 @@ body.fasto-reader-mode article p {
 [type="submit"]:not(:disabled) {
   background-color: $ingos-color-blueish-dark;
   color: $ingos-color-white;
+  // TODO add fill for svg or restrict
 }
 
+#icons-default-search {
+  fill: currentColor; // does this fix search icon svg?
+}
