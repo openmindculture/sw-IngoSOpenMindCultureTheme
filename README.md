@@ -143,7 +143,16 @@ There is an optional Shopware CLI that is not included in Dockware. You can get 
 But this will include the `vendor` directory and produce a huge file, so we must either use a git (release) branch,
 **or create a zip manually**.
 
+This can be done outside the container by zipping the content below `/src` so that the top-level plugin directory remains as a wrapping folder. In a GUI file manager, this might be done by right-clicking on `IngoSOpenMindCultureTheme` and "create archive".
+
 Expected structure inside the zip file `IngoSOpenMindCultureTheme.zip`:
+
+```
+IngoSOpenMindCultureTheme/
++-- IngoSOpenMindCultureTheme/src/
+  +-- IngoSOpenMindCultureTheme/composer.json
+```
+
 `IngoSOpenMindCultureTheme/`
 `IngoSOpenMindCultureTheme/src`
 `IngoSOpenMindCultureTheme/composer.json`
