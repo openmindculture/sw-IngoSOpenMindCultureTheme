@@ -20,7 +20,14 @@ Modern Shopware 6 (6.4+) favors no-code Shopping Experiences with dynamic produc
 
 Layouts, products and media (images) for the Open Mind Culture shop are stored in the `/data` directory of this repository. Installable theme release files are in `/dist`.
 
-Changes in theme code can be done via `composer.json`, `theme.json` configuration, overriding global variables or custom properties in `overrides.scss` or an imported `abstract/variables` and SCSS styling in `base.scss`. When overriding themes, prefer higher level components said to be less likely to change, use `sw_extends` to extend the original file and only override the blocks that need to change. Prefer adding wrappers or additional code and include the original `{{ parent() }}` instead of copying storefront platform code preventing upcoming Shopware core updates. 
+Changes in theme code can be done via `composer.json`, `theme.json` configuration, overriding global variables or custom properties in `overrides.scss` or an imported `abstract/variables` and SCSS styling in `base.scss`. When overriding themes, prefer higher level components said to be less likely to change, use `sw_extends` to extend the original file and only override the blocks that need to change. Prefer adding wrappers or additional code and include the original `{{ parent() }}` instead of copying storefront platform code preventing upcoming Shopware core updates.
+
+### Social Media and SEO Meta Data
+
+- Merchants must use category description to enter arbitrary HTML **and `<h1>`** headings
+- The content will be rendered and used for social media preview.
+- Title and custom content are also used as a fallback for empty SEO meta data.
+- Category images will not be displayed, but used for social media meta data.
 
 ## Development
 
@@ -259,7 +266,34 @@ Deploy the theme using `bin/console` or the admin theme manager.
 
 Import CMS: `./bin/console dal:import:layout layouts.json` or `./bin/console cms:import var/export/cms/`
 
-#### Shopware 6 Best Practices and Takeaways
+## Shopware 6 Best Practices and Takeaways
+
+### Updating Shopware 6
+
+> Check the latest official documentation and **always prefer CLI** (command line) over graphical (admin UI) updates. **Always back up** all data before any update!
+
+Alternatively, pay for professional maintenance. Note that automatic Shopware platform updates might bot be included in basic managed hosting plans.
+
+#### Shopware 6 Platform Update using bin/console
+
+- make a backup
+- `bin/console theme:change #` remove/reassign default sales channel theme assignment (0 to 0)
+- `bin/console plugin:deactivate` ... (each one)
+- `bin/console cache:clear #` never hurts
+- `bin/console system:update:prepare`
+- `vi composer.json #` update platform core or reset to `~v6.7.0` (*)
+- `composer update`
+- `bin/console system:update:finish #` runs migrations
+- `bin/console cache:clear #` never hurts
+- `bin/console plugin:activate` ... reactivate all extensions
+- `bin/console theme:change #` reassign custom theme to sales channel
+- `bin/console cache:clear #` never hurts
+
+(*) check the Shopware core platform template source code on GitHub 
+
+The process above is based on the documentation at https://docs.shopware.com/en/shopware-6-en/update-guides/updating-shopware and has sucessfully finished at least once to update to Shopware 6.7.8.2 on a managed enerspace web server.
+
+### Miscellaneous Shopware 6 Tips and Notes
 
 - Consistent SCSS and CSS class name prefixing: use lowercased vendor id as css class name prefix to generate compact yet unique class names, e.g. `swag` (for Shopware AG) or `ingos` for `IngoS` but no need for a wordy preifx like `ingo-open-mind-culture-theme`.
 
