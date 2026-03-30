@@ -81,14 +81,27 @@ body {
 }
 
 nav,
+.navbar-nav {
+  font-family: $font-family-serif;
+}
+
+nav,
 .navbar-nav,
 .product-detail-description-text,
 {
   color: $sw-text-color;
-  font-family: $font-family-serif;
   font-size: 16px;
   font-weight: normal;
   line-height: 32px;
+}
+
+.product-detail-description-text {
+  font-family: $font-family-base;
+  max-width: 95%;
+}
+
+.product-detail-description-text p:not(:first-child) {
+  margin-top: 16px;
 }
 
 h1,
@@ -430,4 +443,78 @@ body.fasto-reader-mode article p {
 
 #icons-default-search {
   fill: currentColor; // does this fix search icon svg?
+}
+
+.header-search-btn {
+  background-color: $ingos-color-blueish-dark;
+}
+
+.header-search-btn,
+.header-search-btn .icon {
+  color: $ingos-color-white;
+}
+
+.top-bar-list .dropdown-item {
+  background-color: $ingos-color-white;
+  color: $ingos-color-blueish-dark;
+}
+
+// Cost Transparency Extension customization:
+:root {
+  --ingos-cost-transparency-color-01: $ingos-color-green-dark;
+  --ingos-cost-transparency-color-02: $ingos-color-blue-light;
+  --ingos-cost-transparency-color-03: $ingos-color-yellow;
+  --ingos-cost-transparency-color-04: $ingos-color-orange;
+  --ingos-cost-transparency-color-05: $ingos-color-spring-green;
+}
+
+.ingos-cost-details .ingos-cost-detail {
+  background-color: $sw-border-color;
+  color: $sw-color-brand-primary;
+}
+
+.ingos-cost-detail ul {
+  flex-grow: 1;
+}
+
+.ingos-cost-group-label {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0;
+}
+
+.ingos-cost-group-label p:last-child {
+  margin-bottom: 8px;
+}
+
+// Source code syntax highlighting options
+pre.ingos-code-syntax {
+  display: block;
+  margin-top: 16px;
+}
+
+.ingos-code-syntax {
+  background-color: $ingos-color-background-black;
+  color: $ingos-syntax-silver;
+  border-radius: 5px;
+  font-family: monospace;
+  padding: 16px;
+  white-space: pre;
+}
+
+.ingos-js-const {
+  color: $ingos-syntax-sky;
+}
+
+.ingos-js-hash,
+.ingos-js-token {
+  color: $ingos-syntax-aqua;
+}
+
+.ingos-js-obj {
+  color: $ingos-syntax-clay;
+}
+
+.ingos-js-error {
+  color: $ingos-syntax-red;
 }

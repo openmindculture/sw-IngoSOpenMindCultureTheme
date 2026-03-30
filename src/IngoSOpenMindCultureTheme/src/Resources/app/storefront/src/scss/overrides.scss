@@ -10,6 +10,7 @@ $link-color: $ingos-color-blueish-dark;
 $link-hover-color-rgb: #{red($link-hover-color)}, #{green($link-hover-color)}, #{blue($link-hover-color)};
 $link-color-rgb: #{red($link-color)}, #{green($link-color)}, #{blue($link-color)};
 
+
 // 3. Override the RGB variable for Bootstrap utilities
 // Using an internal function:
 // $link-hover-color-rgb: to-rgb($my-hover-color);
