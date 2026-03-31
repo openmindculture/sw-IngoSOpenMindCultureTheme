@@ -14,3 +14,6 @@ src/SwagExtensionStore
 Shopware-storefront-src
 data/dump.sql
 data/public
+src/FroshDevelopmentHelper/
+src/IngoSOpenMindCultureTheme.zip
+src/frosh-plugin-uploader.phar

@@ -378,15 +378,16 @@ The [FroshDevelopmentHelper plugin](https://github.com/FriendsOfShopware/FroshDe
 `<!-- TEMPLATE START: "@Storefront/storefront/block/cms-block-image-text.html.twig" -->`
 
 **Don't** install the Frosh (friends of Shopware) development helper on the command line using `composer require` as this breaks the `bin/console` command recipe in Shopware 6.7+. If you already did, rebuild the container using `docker compose down && docker compose up --build`. Alternatively, as the [Git version installation documentation](https://github.com/FriendsOfShopware/FroshDevelopmentHelper/tree/main?tab=readme-ov-file#git-version) shows, we can check out from GitHub and install it with the (officially deprecated) [FroshPluginUploader
-](https://github.com/FriendsOfShopware/FroshPluginUploader) and bin/console plugin manager. As Dockware defaults with no `git` command, we can download and unpack the archive instead. If necessary, we must also install the required `pdo_mysql` library.
+](https://github.com/FriendsOfShopware/FroshPluginUploader) and bin/console plugin manager.
 
 ```bash
-sudo apt update
-sudo apt install -y libmariadb-dev
-docker-php-ext-install pdo_mysql
-# Checkout Plugin in /custom/plugins/FroshDevelopmentHelper
-# Download FroshPluginUploader and run ext:prepare [folder to plugin]
-# Install the Plugin with the Plugin Manager:
+cd custom/plugins
+sudo chmod ugo+rw .
+git clone https://github.com/FriendsOfShopware/FroshDevelopmentHelper.git
+curl -L https://github.com/FriendsOfShopware/FroshPluginUploader/releases/download/0.3.19/frosh-plugin-upload.phar -o frosh-plugin-uploader.phar
+sudo chmod ugo+x frosh-plugin-uploader.phar
+./frosh-plugin-uploader.phar ext:prepare ./FroshDevelopmentHelper
+cd ../..
 bin/console plugin:refresh
 bin/console plugin:install --activate FroshDevelopmentHelper
 bin/console cache:clear
