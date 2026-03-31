@@ -1,0 +1,6 @@
+{% sw_extends '@Storefront/storefront/layout/meta.html.twig' %}
+
+{% set category_image = page.category.media.url ?? null %}
+{% block layout_head_meta_tags_image_og %}{{ category_image ?: parent() }}{% endblock %}
+{% block layout_head_meta_tags_image_meta %}{{ category_image ?: parent() }}{% endblock %}
+{% block layout_head_meta_tags_image_twitter %}{{ category_image ?: parent() }}{% endblock %}

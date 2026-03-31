@@ -1,0 +1,15 @@
+{% sw_extends '@Storefront/storefront/block/cms-block-image-text.html.twig' %}
+
+{% block block_image_text %}
+    {# Only suppress the image on category pages (category intro block) #}
+    {% if page.category is defined and page.category is not null %}
+        {# Image intentionally omitted — output via JSON-LD/meta instead #}
+        {% set element = block.slots.getSlot('right') %}
+        {% block block_image_text_right_inner %}
+            {{ parent() }}
+        {% endblock %}
+    {% else %}YES
+        {{ parent() }}
+    {% endif %}
+    {# TODO verify confirm the exact block name inside cms-block-image-text.html.twig first. #}
+{% endblock %}
