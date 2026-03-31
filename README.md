@@ -370,3 +370,32 @@ Path: `src/Resources/app/storefront/src/scss/overrides.scss`
    PluginManager.deregister('CookiePermission', '[data-cookie-configuration-button]');
    PluginManager.deregister('ZoomModal', '[data-zoom-modal]');
 ```
+
+#### Twig Template Hints
+
+The [FroshDevelopmentHelper plugin](https://github.com/FriendsOfShopware/FroshDevelopmentHelper/) can make Shopware/Symfony emit comments like:
+
+`<!-- TEMPLATE START: "@Storefront/storefront/block/cms-block-image-text.html.twig" -->`
+
+**Don't** install the Frosh (friends of Shopware) development helper on the command line using `composer require` as this breaks the `bin/console` command recipe in Shopware 6.7+. If you already did, rebuild the container using `docker compose down && docker compose up --build`. Alternatively, as the [Git version installation documentation](https://github.com/FriendsOfShopware/FroshDevelopmentHelper/tree/main?tab=readme-ov-file#git-version) shows, we can check out from GitHub and install it with the (officially deprecated) [FroshPluginUploader
+](https://github.com/FriendsOfShopware/FroshPluginUploader) and bin/console plugin manager. As Dockware defaults with no `git` command, we can download and unpack the archive instead. If necessary, we must also install the required `pdo_mysql` library.
+
+```bash
+sudo apt update
+sudo apt install -y libmariadb-dev
+docker-php-ext-install pdo_mysql
+# Checkout Plugin in /custom/plugins/FroshDevelopmentHelper
+# Download FroshPluginUploader and run ext:prepare [folder to plugin]
+# Install the Plugin with the Plugin Manager:
+bin/console plugin:refresh
+bin/console plugin:install --activate FroshDevelopmentHelper
+bin/console cache:clear
+```
+
+#### Twig Debug
+
+Note that's not Twig's debug mode enabled in Drupal, Shopware 5 or other Symfony environments in `.env.local` files with `APP_ENV=dev` or in `config/packages/twig.yaml`. "Twig debug" in Shopware 6.7 only allows specific debugging strategies but does not enable template hints.
+
+#### XDEBUG
+
+Note that there is still yet another debug vector known as XDEBUG that can be enabled in `docker-compose.yml` setting `XDEBUG_ENABLED=1` and `XDEBUG_REMOTE_HOST=host.docker.internal` (default value for Mac and Windows, or `XDEBUG_REMOTE_HOST=172.17.0.1` for Linux) and optionally `XDEBUG_CONFIG` which defaults to `idekey=PHPSTORM` and `PHP_IDE_CONFIG` defaults to `serverName=localhost` as documented by Dockware at https://docs.dockware.io/dockware-web/environment-variables 
