@@ -461,11 +461,11 @@ body.fasto-reader-mode article p {
 
 // Cost Transparency Extension customization:
 :root {
-  --ingos-cost-transparency-color-01: $ingos-color-green-dark;
-  --ingos-cost-transparency-color-02: $ingos-color-blue-light;
-  --ingos-cost-transparency-color-03: $ingos-color-yellow;
-  --ingos-cost-transparency-color-04: $ingos-color-orange;
-  --ingos-cost-transparency-color-05: $ingos-color-spring-green;
+  --ingos-cost-transparency-color-01: #{$ingos-color-green-dark};
+  --ingos-cost-transparency-color-02: #{$ingos-color-blue-light};
+  --ingos-cost-transparency-color-03: #{$ingos-color-yellow};
+  --ingos-cost-transparency-color-04: #{$ingos-color-orange};
+  --ingos-cost-transparency-color-05: #{$ingos-color-spring-green};
 }
 
 .ingos-cost-details .ingos-cost-detail {
