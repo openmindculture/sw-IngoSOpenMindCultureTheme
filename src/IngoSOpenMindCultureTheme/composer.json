@@ -2,7 +2,7 @@
   "name": "ingo-s/ingo-s-open-mind-culture-theme",
   "description": "Ingo's Open Mind Culture Theme",
   "type": "shopware-platform-plugin",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "license": "proprietary",
   "require": {
     "shopware/core": "^6.7.0",
