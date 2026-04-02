@@ -461,11 +461,13 @@ body.fasto-reader-mode article p {
 
 // Cost Transparency Extension customization:
 :root {
-  --ingos-cost-transparency-color-01: #{$ingos-color-green-dark};
-  --ingos-cost-transparency-color-02: #{$ingos-color-blue-light};
-  --ingos-cost-transparency-color-03: #{$ingos-color-yellow};
-  --ingos-cost-transparency-color-04: #{$ingos-color-orange};
-  --ingos-cost-transparency-color-05: #{$ingos-color-spring-green};
+
+  --ingos-cost-transparency-color-01: #{$ingos-color-green-darker};
+  --ingos-cost-transparency-color-02: #{$ingos-color-blue-pale-dark};
+  --ingos-cost-transparency-color-03: #{$ingos-color-purple-dark};
+  --ingos-cost-transparency-color-04: #{$ingos-color-brown};
+  --ingos-cost-transparency-color-05: #{$ingos-color-orange};
+
 }
 
 .ingos-cost-details .ingos-cost-detail {
@@ -477,14 +479,20 @@ body.fasto-reader-mode article p {
   flex-grow: 1;
 }
 
-.ingos-cost-group-label {
-  display: flex;
-  flex-direction: column-reverse;
-  gap: 0;
-}
+/* match plugin layout breakpoint */
+@media (min-width: 1189px) {
+  .ingos-cost .ingos-cost-group .ingos-cost-group-label {
+    margin: -40px 0 0 12px;
+    padding-top: 0;
+  }
 
-.ingos-cost-group-label p:last-child {
-  margin-bottom: 8px;
+  .ingos-cost .ingos-cost-group .ingos-cost-group-label p:first-child {
+    color: $ingos-color-white;
+  }
+
+  .ingos-cost .ingos-cost-group .ingos-cost-group-label p:last-child {
+    margin-bottom: 8px;
+  }
 }
 
 // Source code syntax highlighting options
