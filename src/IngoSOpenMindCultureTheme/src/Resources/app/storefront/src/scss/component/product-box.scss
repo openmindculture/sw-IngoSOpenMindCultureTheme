@@ -1,0 +1,79 @@
+.product-box {
+  border: none;
+}
+
+.product-image.is-standard {
+  object-fit: cover;
+}
+
+// shorter, and hidden for free download products
+// product-price-tax-link btn btn-link-inline fs-6
+// Prices incl. VAT plus shipping costs
+
+.cms-element-product-listing .product-category-links {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  background: $ingos-color-purple-dark;
+  color: $ingos-color-white;
+  border-radius: $ingos-border-radius-default;
+  font-family: $font-family-serif;
+  padding: 0 4px;
+  z-index: 2;
+}
+
+.cms-element-product-listing .product-category-links .product-category-link,
+.cms-element-product-listing .product-category-links .product-category-link:link,
+.cms-element-product-listing .product-category-links .product-category-link:visited,
+.cms-element-product-listing .product-category-links .product-category-link:active,
+.cms-element-product-listing .product-category-links .product-category-link:hover,
+.cms-element-product-listing .product-category-links .product-category-link:focus {
+  color: $ingos-color-white;
+  text-decoration: none;
+}
+
+.cms-element-product-listing .product-price-info {
+  position: absolute;
+  left: -10px;
+  top: 180px;
+  background: $ingos-color-white;
+  color: $sw-color-brand-primary;
+  font-family: $font-family-serif;
+  padding: 7px 12px;
+  border-radius: $ingos-border-radius-default;
+  text-align: center;
+  box-shadow: -2px 1px 37.6px 2.4px rgba(0, 0, 0, 0.1);
+}
+
+.cms-element-product-listing .product-price-tax-link {
+  // todo replace with shorter text
+  max-width: 100px;
+  max-height: 20px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: block;
+}
+
+.cms-element-product-listing .btn-buy {
+  position: absolute;
+  right: -10px;
+  top: 190px;
+  width: 50px;
+  height: 30px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: block;
+  padding: 3px;
+  border-radius: $ingos-border-radius-default;
+  text-align: center;
+  box-shadow: -2px 1px 37.6px 2.4px rgba(0, 0, 0, 0.1);
+  background-color: $ingos-color-blueish-dark;
+}
+
+.cms-element-product-listing .btn-buy .icon,
+.cms-element-product-listing .btn-buy svg {
+  color: $ingos-color-white;
+  fill: $ingos-color-white;
+  top: 0;
+  vertical-align: top;
+}
