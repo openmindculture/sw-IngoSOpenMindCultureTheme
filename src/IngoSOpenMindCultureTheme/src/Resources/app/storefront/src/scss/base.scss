@@ -172,7 +172,7 @@ body.fasto-reader-mode article p {
 .header-minimal,
 .header-main {
   margin-top: 48px; // TODO use variable and/or rem
-  border-radius: 5px 5px 0 0;
+  border-radius: $ingos-border-radius-default $ingos-border-radius-default 0 0;
   z-index: 100; // over subsequent to show drop shadow
 }
 
@@ -202,7 +202,7 @@ body.fasto-reader-mode article p {
   display: flex;
   justify-content: center;
   background-color: $ingos-color-background-black;
-  border-radius: 0 0 5px 5px;
+  border-radius: 0 0 $ingos-border-radius-default $ingos-border-radius-default;
   color: $ingos-color-white;
   font-family: $font-family-serif;
   font-size: 1rem;
@@ -220,7 +220,7 @@ body.fasto-reader-mode article p {
 .footer-main > .container .footer-columns a:link,
 .footer-main > .container .footer-columns a:visited {
   border: solid 1px $sw-border-color-dimmed;
-  border-radius: 5px;
+  border-radius: $ingos-border-radius-default;
   color: $ingos-color-white;
   font-size: var(--bs-nav-link-font-size);
   text-decoration: none;
@@ -376,12 +376,16 @@ body.fasto-reader-mode article p {
 // TODO refactor using BS Bootstrap Breakpoint
 @include media-breakpoint-up(lg) { // 992 <
   .cms-element-product-listing .cms-listing-row {
+    display: flex;
     column-gap: var(--bs-gutter-x);
     row-gap: var(--bs-gutter-y);
     justify-content: space-between;
     max-width: 100%;
     margin-left: auto;
     margin-right: auto;
+  }
+  .cms-element-product-listing .cms-listing-row:not(:has(:nth-child(3))) {
+    justify-content: flex-start;
   }
   .cms-section .boxed .cms-element-product-listing .cms-listing-col {
     width: 33%;
@@ -414,6 +418,10 @@ body.fasto-reader-mode article p {
   }
 }
 
+.cms-element-product-listing .cms-section.pos-0 .cms-block-image-text .cms-block-container {
+  padding-bottom: 0 !important;
+}
+
 .ingos-footer-navigation-wrapper {
   padding-top: 50px;
 }
@@ -421,6 +429,79 @@ body.fasto-reader-mode article p {
 .footer-main .list-unstyled:empty {
   display: none;
 }
+
+// TODO hide bottom navigation if posts per page < 4 and has top pagination
+// and rather move all top stuff below so that we start with pictures like omc blog
+
+// shorter, and hidden for free download products
+// product-price-tax-link btn btn-link-inline fs-6
+// Prices incl. VAT plus shipping costs
+
+.cms-element-product-listing .product-category-links {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  background: $ingos-color-purple-dark;
+  color: $ingos-color-white;
+  border-radius: $ingos-border-radius-default;
+  font-family: $font-family-serif;
+  padding: 0 4px;
+}
+
+.cms-element-product-listing .product-category-links .product-category-link,
+.cms-element-product-listing .product-category-links .product-category-link:link,
+.cms-element-product-listing .product-category-links .product-category-link:visited,
+.cms-element-product-listing .product-category-links .product-category-link:active,
+.cms-element-product-listing .product-category-links .product-category-link:hover,
+.cms-element-product-listing .product-category-links .product-category-link:focus {
+  color: $ingos-color-white;
+  text-decoration: none;
+}
+
+.cms-element-product-listing .product-price-info {
+  position: absolute;
+  left: -10px;
+  top: 180px;
+  background: $ingos-color-white;
+  color: $sw-color-brand-primary;
+  font-family: $font-family-serif;
+  padding: 7px 12px;
+  border-radius: $ingos-border-radius-default;
+  text-align: center;
+  box-shadow: -2px 1px 37.6px 2.4px rgba(0, 0, 0, 0.1);
+}
+
+.cms-element-product-listing .product-price-tax-link {
+  // todo replace with shorter text
+  max-width: 100px;
+  max-height: 20px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: block;
+}
+
+.cms-element-product-listing .btn-buy {
+  position: absolute;
+  right: -10px;
+  top: 190px;
+  width: 50px;
+  height: 30px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: block;
+  border-radius: $ingos-border-radius-default;
+  text-align: center;
+  box-shadow: -2px 1px 37.6px 2.4px rgba(0, 0, 0, 0.1);
+  background-color: $ingos-color-blueish-dark;
+}
+
+.cms-element-product-listing .btn-buy,
+.cms-element-product-listing .btn-buy .icon,
+.cms-element-product-listing .btn-buy svg {
+  color: $ingos-color-white;
+  fill: $ingos-color-white;
+}
+
 
 .footer-main .footer-column,
 .footer-main .footer-column-headline,
@@ -508,7 +589,7 @@ pre.ingos-code-syntax {
 .ingos-code-syntax {
   background-color: $ingos-color-background-black;
   color: $ingos-syntax-silver;
-  border-radius: 5px;
+  border-radius: $ingos-border-radius-default;
   font-family: monospace;
   padding: 16px;
   white-space: pre;

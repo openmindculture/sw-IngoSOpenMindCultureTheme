@@ -9,6 +9,9 @@
         <service id="IngoSOpenMindCultureTheme\Subscriber\CartCrosssellerSubscriber">
             <tag name="kernel.event_subscriber"/>
         </service>
+        <service id="IngoSOpenMindCultureTheme\Subscriber\ProductListingCategorySubscriber">
+            <tag name="kernel.event_subscriber"/>
+        </service>
     </services>
 
 </container>

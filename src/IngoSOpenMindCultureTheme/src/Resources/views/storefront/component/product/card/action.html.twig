@@ -1,0 +1,9 @@
+{% sw_extends '@Storefront/storefront/component/product/card/action.html.twig' %}
+
+{% block component_product_box_action_buy_button %}
+    <button class="btn btn-block btn-buy"
+            title="{{ 'listing.boxAddProduct'|trans|sw_sanitize }}"
+            aria-label="{{ 'listing.boxAddProduct'|trans|sw_sanitize }}">
+        {% sw_icon 'cart' %}
+    </button>
+{% endblock %}

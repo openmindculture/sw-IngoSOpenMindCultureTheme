@@ -1,0 +1,8 @@
+{% sw_extends '@Storefront/storefront/component/product/card/buy-widget.html.twig' %}
+
+{% block buy_widget_buy_button %}
+    <button class="btn btn-block btn-buy"
+            title="{{ 'listing.boxAddProduct'|trans|sw_sanitize }}">
+        cff{% sw_icon 'cart' %}
+    </button>
+{% endblock %}
