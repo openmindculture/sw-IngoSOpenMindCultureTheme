@@ -2,7 +2,7 @@
 
 ## sw-IngoSOpenMindCultureTheme
 
-A Shopware 6 theme used for my Open Mind Culture shop to match the existing theme of the [Open Mind Culture blog](https://www.open-mind-culture.org) to experiment and showcase frontend customization possibilities while maintaining performance, sustainability, SEO and accessibility.
+A Shopware 6 theme used for my Open Mind Culture shop to match the existing theme of the [Open Mind Culture blog](https://www.open-mind-culture.org) to experiment and showcase frontend customization possibilities while maintaining performance, sustainability, SEO, and accessibility.
 
 Theme style and layout are inspired by the Open Mind Culture WordPress blog and its modified fasto theme. This is a work in progress. This theme project might serve as a blueprint for future Shopware 6 themes. No warranty. License: proprietary.
 
@@ -10,7 +10,7 @@ The development environment is based on [Ingo's Masonry Theme](https://github.co
 
 ### Shopware 6 Development Best Practices
 
-Beyond documented and proven best practices for Shopware 6 frontend development using SCSS styling, twig templating and theme configuration, this code base serves as a living library of working Shopware 6 theme code. Beware of [Shopware 6 changes since the academy training videos](https://dev.to/ingosteinke/shopware-changes-since-the-60-dev-training-videos-481o) or any other learning path or documentation.
+Beyond documented and proven best practices for Shopware 6 frontend development using SCSS styling, twig templating, and theme configuration, this code base serves as a living library of working Shopware 6 theme code. Beware of [Shopware 6 changes since the academy training videos](https://dev.to/ingosteinke/shopware-changes-since-the-60-dev-training-videos-481o) or any other learning path or documentation.
 
 Further reading: [Shopware dev productivity and plugin validation](https://dev.to/ingosteinke/shopware-dev-productivity-and-plugin-validation-14jm). Also check out [Cost Transparency](https://store.shopware.com/en/ingos57544164693f/cost-transparency.html) by [Ingo Steinke](https://store.shopware.com/en/ingos57544164693f/cost-transparency.html#hook-manufacturer) and the source code at [github.com/openmindculture/sw-IngoSCostTransparency](https://github.com/openmindculture/sw-IngoSCostTransparency) for an evergreen Shopware 6 extension example.
 
@@ -80,7 +80,7 @@ and for linting Twig code:
 #### applying changes
 
 For SCSS changes to take effect, running:
-- `bin/console theme:compile && bin/console cache:clear` is sufficient. Twig template changes should take effect immediately after browser reload.
+- `bin/console theme:compile && bin/console cache:clear` is sufficient. Twig template changes should take effect immediately after reloading a page in the browser.
 
 #### Optional Verbose vs. Silent Switches
 
@@ -130,15 +130,15 @@ If code assistance fails or gives false positive warnings, mark the Shopware pla
 
 To initialize and update everything, run `composer install && bin/console theme:refresh` inside the Docker container's main directory, `/var/www/html` and, if necessary, invalidate caches in the PhpStorm file menu and restart the IDE.
 
-If PhpStorm still shows warnings like "Undefined namespace 'Framework' " or "Undefined class 'CategoryCollection' " after setting the platform source, composer install, cache invalidation and IDE restart, run `composer install` inside the platform source code root directory and install any missing code dependencies like `shopware/core dev-trunk` and install and enable PHP extensions like GD, if necessary. Then re-run composer until it finishes without error.
+If PhpStorm still shows warnings like "Undefined namespace 'Framework' " or "Undefined class 'CategoryCollection' " after setting the platform source, composer install, cache invalidation, and IDE restart, run `composer install` inside the platform source code root directory and install any missing code dependencies like `shopware/core dev-trunk` and install and enable PHP extensions like GD, if necessary. Then re-run composer until it finishes without error.
 
-Adjust PHP versions so that the local host system, Dockware and PhpStorm match in the best case. You might need to remove older supported PHP versions from the platform's `composer` file to prevent local PHP version mismatch.
+Adjust PHP versions so that the local host system, Dockware, and PhpStorm match in the best case. You might need to remove older supported PHP versions from the platform's `composer` file to prevent local PHP version mismatch.
 
 - `sudo apt update && sudo apt install -y php8.3-common php8.3-mysql php8.3-xml php8.3-curl php8.3-gd php8.3-intl php8.3-mbstring php8.3-opcache php8.3-zip php8.3-xsl php8.3-cli`
 
 Wait for indexing to finish. Invalidate (clear) caches and restart the IDE again, if necessary. 
 
-## Theme Export, Verification and Deployment
+## Theme Export, Verification, and Deployment
 
 Build an exportable zip archive file to upload into a shop backend or Shopware's plugin marketplace.
 
@@ -173,37 +173,60 @@ We can still use `sw-cli` to validate our extension archive:
 <a name="backup-export-deployment" id="backup-export-deployment"></a>
 ## Data Backup/Export/Deployment
 
-Don't use administration UI Settings → Import/Export, restricted to one CSV per table and without migration option. Don't use the Shopware Migration Assistant extension either. Best practice are sql dumps generated by `sw-cli` or `sql` command line client plus `rsync` for media files.
+Don't use administration UI Settings → Import/Export, restricted to one CSV per table and without a migration option. Don't use the Shopware Migration Assistant extension either. Best practice is an SQL dump generated by `sw-cli` or `sql` command line client plus `rsync` for media files, as described below.
 
 If the target instance is a stage or localhost, it is recommended, but technically not necessary to put it into stage mode which resets the appId, prevents license conflicts and accidental actions or outgoing emails.
 
-Assuming `ssh` to a remote source server `web123@example.com` and a local Dockware container `c54` with the default `root:root` database credentials.
+Assuming `ssh` to a remote source server `web123@example.com` and a local Dockware container `theme` with the default `root:root` database credentials.
 
-Run all commands in the shopware instance top level directory unless stated otherwise.
+Run all commands **in the shopware instance top level directory** unless stated otherwise. That is the same directory where `bin/console` works. On a remote production server, that's usually not your user's home directory but the root directory of the web server, like `shop.example.com`.
 
 ### Preparation
 
-Both source and target system should run exactly the same Shopware version with the exact same extensions, ideally also the same PHP, SQL/MariaDB versions etc. 
+Both source and target systems should run exactly the same Shopware version with the exact same extensions, ideally also the same PHP, SQL/MariaDB versions etc.
 
 ### On the Remote/Production/Source Instance Server
 
-- `shopware-cli project dump --clean --anonymize --skip-lock-tables`
+Ensure to create an SQL dump contains no customer data, credentials, or invalid binary data (mojibake) causing the import to stop at validation errors. If `shopware-cli project dump --clean --anonymize --skip-lock-tables` fails to create such a dump or does not support passing the `--hex-blob` option, use the `mysqldump` command line client instead to create a `dump.sql` file in the current directory that we will download using `scp`.
+
+- `cd {shopware-instance-top-level-directory}`
+
+- `mysqldump -u K10123_shopware_6 -p -h localhost --hex-blob --no-tablespaces --no-create-info --skip-add-locks K10123_shopware_6 > dump.sql`
+
+The `-p` switch prompts for the password to prevent the password from being stored in the shell history. If you have no password, try looking up `grep "DATABASE_URL" .env.local` and see if the database url string contains a password. Note that this password is url-encoded, thus %2F would become a slash and %25 would become a percent sign, %5E becomes a caret (^), and %21 an exclamation mark (!), so the econded string `bG%5EcdB035%25` becomes `bG^cdB035%` in its final form. 
 
 ### On the Target System
 
-Deactivate all active extensions.
+Inside the container, deactivate all active extensions.
 
-Check the SQL dump. If necessary, delete `DEFAULT '...'` definitions within `CREATE TABLE` statements that contain binary data (mojibake) causing the import to stop at validation errors. Remove all customer data, orders, addresses, emails, credentials and other potentially sensitive data.
+- `docker exec -it theme bash`
+- `bin/console theme:change #` remove/reassign default sales channel theme assignment (0 to 0)
+- `bin/console plugin:deactivate` ... (each one)
+- `bin/console cache:clear`
 
-- `docker exec -i c54 mysql -u root -proot -h 127.0.0.1 -f  shopware < data/dump.sql`
+Fetch and import the SQL dump.
 
-- `rsync -avzP u1@web123.example.com:/shop.examle.com/public/media ./data/public/media/`
+- `scp u1@web123.example.com:/shop.example.com/dump.sql .`
+- strip incomptaible definitions
+  - `sed -i 's/DEFAULT json_object()//g' dump.sql`
+  - `sed -i 's/DEFAULT json_array()//g' dump.sql`
+- `mysql -u root -proot -h 127.0.0.1 -f  shopware < ./dump.sql`
+
+Copy the media files.
+
+- `rsync -avzP u1@web123.example.com:/shop.example.com/public/media ./public/media/`
 
 Clear the cache.
 
+- `bin/console cache:clear`
+
+Open the local /admin, let Shopware adjust the APP_URL environment variable, and generate a new shop identifier if suggested. Check and assign domains and themes in the admin UI if necessary, like when `sw-app.component.sw-app-shop-id-change-modal.error.shop-id-change-failed`.
+
+http://localhost/admin#/login/
+
 ### Workarounds only when needed
 
-Recreate Thumbnails. Recompile the theme. In the admin UI, reassign the storefront/sales channel. Refresh database index.
+Recreate Thumbnails. Recompile the theme. In the admin UI, reassign the storefront/sales channel. Refresh the database index.
 
 - `bin/console media:generate-thumbnails`
 - `bin/console dal:refresh:index`
@@ -218,11 +241,11 @@ If necessary, delete or add conflicting database entries, especially after migra
 
 If necessary, delete and recreate the database with the same name (default `shopware`) before importing a new database dump.
 
-- `docker exec -i c54 mysql -u root -proot -h 127.0.0.1 -e "DROP DATABASE shopware; CREATE DATABASE shopware;"`
+- `docker exec -i theme mysql -u root -proot -h 127.0.0.1 -e "DROP DATABASE shopware; CREATE DATABASE shopware;"`
 
-- `docker exec -i c54 mysql -u root -proot -h 127.0.0.1 -e "DELETE FROM system_config WHERE configuration_key = 'core.app.shopId';" shopware`
+- `docker exec -i theme mysql -u root -proot -h 127.0.0.1 -e "DELETE FROM system_config WHERE configuration_key = 'core.app.shopId';" shopware`
 
-- `docker exec -i c54 mysql -u root -proot -h 127.0.0.1 -e "UPDATE app SET url = 'http://localhost' WHERE url LIKE 'https://shop.example.com%';" shopware` # fails with duplicate unique key for multi-domain or multiple path setups like bilingual DE/EN storefront slugs without distinct subdomains.
+- `docker exec -i theme mysql -u root -proot -h 127.0.0.1 -e "UPDATE app SET url = 'http://localhost' WHERE url LIKE 'https://shop.example.com%';" shopware` # fails with duplicate unique key for multi-domain or multiple path setups like bilingual DE/EN storefront slugs without distinct subdomains.
 
 ### Inside the Dockware Container
 
@@ -235,10 +258,7 @@ Ensure media permissions (and location):
 - `sudo chown -R www-data:www-data /var/www/html/public/media`
 - `sudo chmod  -R ugo+r  /var/www/html/public/media`
 
-Update Shopware to the latest version:
-
-- `composer update shopware/core shopware/administration shopware/storefront shopware/elasticsearch`
-- `composer update "shopware/*" --with-all-dependencies`
+Update Shopware to the latest version [as described below](#shopware-core-update).
 
 ## Command Line CSV Export Creation
 
@@ -268,26 +288,32 @@ Import CMS: `./bin/console dal:import:layout layouts.json` or `./bin/console cms
 
 ## Shopware 6 Best Practices and Takeaways
 
+<a name="shopware-core-update"></a>
 ### Updating Shopware 6
 
 > Check the latest official documentation and **always prefer CLI** (command line) over graphical (admin UI) updates. **Always back up** all data before any update!
 
 Alternatively, pay for professional maintenance. Note that automatic Shopware platform updates might bot be included in basic managed hosting plans.
 
+Make a backup! Unassign the theme from the storefront sales channel and deactivate all extensions (themes and plugins). Update Shopware to the latest version as described below.
+
 #### Shopware 6 Platform Update using bin/console
 
 - make a backup
 - `bin/console theme:change #` remove/reassign default sales channel theme assignment (0 to 0)
 - `bin/console plugin:deactivate` ... (each one)
-- `bin/console cache:clear #` never hurts
+- `bin/console cache:clear`
 - `bin/console system:update:prepare`
 - `vi composer.json #` update platform core or reset to `~v6.7.0` (*)
 - `composer update`
+  - or more specifically
+    - `composer update shopware/core shopware/administration shopware/storefront shopware/elasticsearch`
+    - `composer update "shopware/*" --with-all-dependencies`
 - `bin/console system:update:finish #` runs migrations
-- `bin/console cache:clear #` never hurts
+- `bin/console cache:clear`
 - `bin/console plugin:activate` ... reactivate all extensions
 - `bin/console theme:change #` reassign custom theme to sales channel
-- `bin/console cache:clear #` never hurts
+- `bin/console cache:clear`
 
 (*) check the Shopware core platform template source code on GitHub 
 
@@ -395,7 +421,7 @@ bin/console cache:clear
 
 #### Twig Debug
 
-Note that's not Twig's debug mode enabled in Drupal, Shopware 5 or other Symfony environments in `.env.local` files with `APP_ENV=dev` or in `config/packages/twig.yaml`. "Twig debug" in Shopware 6.7 only allows specific debugging strategies but does not enable template hints.
+Note that's not Twig's debug mode enabled in Drupal, Shopware 5, or other Symfony environments in `.env.local` files with `APP_ENV=dev` or in `config/packages/twig.yaml`. "Twig debug" in Shopware 6.7 only allows specific debugging strategies but does not enable template hints.
 
 #### XDEBUG
 
