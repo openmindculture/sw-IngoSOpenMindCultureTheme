@@ -1,0 +1,26 @@
+{% sw_extends '@Storefront/storefront/component/product/listing.html.twig' %}
+
+{% block element_product_listing_pagination_nav_actions %}
+    {% if controllerAction != 'home' %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block element_product_listing_filter %}{% endblock %}
+
+{% block element_product_listing_sorting %}
+    {% set result = listing|default(searchResult|default(element.data)) %}
+
+    <div class="col col-ingos-sorting-filter">
+        {% sw_include '@Storefront/storefront/component/sorting.html.twig' with {
+            sortings: result.availableSortings,
+            current: result.sorting
+        } %}
+
+        {% sw_include '@Storefront/storefront/component/listing/filter-panel.html.twig' with {
+            listing: result,
+            sidebar: false
+        } %}
+    </div>
+
+{% endblock %}

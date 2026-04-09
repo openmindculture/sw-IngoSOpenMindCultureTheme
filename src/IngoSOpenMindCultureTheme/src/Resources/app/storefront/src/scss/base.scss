@@ -144,6 +144,13 @@ h1,
   margin: 0;
 }
 
+.cms-element-text,
+.header-search-form,
+.header-search-form input,
+.product-description {
+  font-family: $font-family-serif;
+}
+
 /* TODO refactor and move to typography component file */
 
 body #fasto-reader-mode-target:target h1,
@@ -156,7 +163,7 @@ body.fasto-reader-mode h2,
 body.fasto-reader-mode h3,
 body.fasto-reader-mode h4,
 body.fasto-reader-mode h5 {
-  font-family: LiebeRuth-Regular, serif;
+  font-family: $font-family-serif;
   font-weight: bold;
 }
 
@@ -194,8 +201,16 @@ body.fasto-reader-mode article p {
   clip-path: inset(0 -20px 0 -20px);
 }
 
-.container-main {
-  padding-top: 0;
+body.is-act-home .pos-0.cms-section-default > .cms-section-default.boxed,
+body.is-active-route-frontend-home-page .pos-0.cms-section-default > .cms-section-default.boxed,
+body.frontend-home-page .pos-0.cms-section-default > .cms-section-default.boxed {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+body:not(.is-active-route-frontend-home-page):not(.frontend-home-page) .container-main,
+body:not(.is-act-home):not(.frontend-home-page) .container-main {
+  padding-top: 0
 }
 
 .footer-main > .container {
@@ -260,6 +275,11 @@ body.fasto-reader-mode article p {
   display: none;
 }
 
+body.is-act-home .filter-panel-item.filter-range.dropdown,
+body.is-active-route-frontend-home-page .filter-panel-item.filter-range.dropdown,
+body.frontend-home-page .filter-panel-item.filter-range.dropdown {
+  display: none;
+}
 // Assuming that the Open Mind Shop MUST always stay simple
 // thus not use abundant product criteria
 // we can force a
@@ -272,11 +292,18 @@ body.fasto-reader-mode article p {
 // b) wide screen desktop >= lg:  992px Bootstrap breakpoint
 // @media (min-width: 992px) {
 
-// todo refactor add custom class in twig
+// todo refactor add custom class in twig - obsolete?
+/*
 .filter-panel-item-toggle {
   z-index: 2;
   position: relative;
   pointer-events: auto;
+}
+*/
+
+.cms-element-product-listing-actions .col-md-auto:not(:has(*)),
+.cms-element-product-listing-actions .col-md-auto:empty {
+  display: none;
 }
 
 // todo refactor add custom class in twig
@@ -284,7 +311,40 @@ body.fasto-reader-mode article p {
   padding-left: 0;
 }
 
+.col-ingos-sorting-filter .filter-panel-item {
+  margin-right: 0;
+}
+
+.col-ingos-sorting-filter .sorting {
+  margin-bottom: 8px;
+}
+
 @include media-breakpoint-up(lg) {
+
+  .col-ingos-sorting-filter .sorting {
+    margin-bottom: 0;
+  }
+
+  .col-ingos-sorting-filter,
+  .col-ingos-sorting-filter .filter-panel-items-container {
+    display: flex;
+    flex-direction: row;
+    width: max-content;
+    max-width: 100%;
+  }
+
+  .col-ingos-sorting-filter,
+  .col-ingos-sorting-filter .filter-panel-items-container {
+    column-gap: 20px;
+  }
+
+  .col-ingos-sorting-filter .filter-panel,
+  .col-ingos-sorting-filter .filter-panel-items-container {
+    padding: 0;
+    margin: 0;
+  }
+
+
   .filter-panel-items-container {
     max-width: calc(100% - 200px);
   }
@@ -293,7 +353,7 @@ body.fasto-reader-mode article p {
     margin-left: 0;
     margin-right: 0;
     width: 100%;
-    margin-top: -90px; // does this make sense? Why? better generic value? TODO
+    // margin-top: -90px; // does this make sense? Why? better generic value? TODO
     // prevent stealing interactivity from overlapped filters...
     pointer-events: none;
   }
@@ -373,6 +433,11 @@ body.fasto-reader-mode article p {
   // ... aber mobil = ?
 }
 
+
+.filter-sort-container {
+  border: solid 2px red;
+}
+
 // Produkte Filtern grundsätzlich weg außer in Suchergebnis wenn überhaupt
 
 // TODO override templates so that we don't have 4 cols but 3 cols
@@ -397,7 +462,8 @@ body.fasto-reader-mode article p {
     margin-left: auto;
     margin-right: auto;
   }
-  .cms-element-product-listing .cms-listing-row:not(:has(:nth-child(3))) {
+  .cms-element-product-listing .cms-listing-row:not(:has(> :nth-child(3 of .cms-listing-col))),
+  .cms-element-product-listing .cms-element-product-listing-actions.row:not(:has(> :nth-child(3 of .cms-listing-col))) {
     justify-content: flex-start;
   }
   .cms-section .boxed .cms-element-product-listing .cms-listing-col {
@@ -405,7 +471,25 @@ body.fasto-reader-mode article p {
     width: calc(33% - var(--bs-gutter-x));
     padding-left: 0;
     padding-right: 0;
+  }
 
+  .cms-page.search-page {
+    padding-top: 20px;
+  }
+
+  body.is-act-index:not(.is-act-home) .cms-block-product-listing,
+  body.is-act-index:not(.is-act-home) .cms-block-product-listing .cms-block-container,
+  body.is-active-route-frontend-navigation-page:not(.is-active-route-frontend-home-page):not(.is-active-route-frontend-search-page) .cms-block-product-listing,
+  body.is-active-route-frontend-navigation-page:not(.is-active-route-frontend-home-page):not(.is-active-route-frontend-search-page) .cms-block-product-listing .cms-block-container {
+    padding-top: 0 !important;
+  }
+
+  h1.search-headline {
+    padding-left: calc(var(--bs-gutter-x) * .5);
+  }
+
+  h1.search-headline + .cms-element-product-listing-wrapper {
+    padding-top: 1rem;
   }
 
   // visually merge filters in one row, assuming there are not too many of them
