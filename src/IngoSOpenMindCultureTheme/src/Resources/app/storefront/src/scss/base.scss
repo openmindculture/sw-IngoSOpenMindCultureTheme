@@ -743,3 +743,20 @@ pre.ingos-code-syntax {
 .header-search-btn:hover .icon {
   color: $ingos-color-white !important;
 }
+
+.header-cart-badge {
+  display: block;
+}
+
+.header-cart {
+  .header-actions-btn {
+    .header-cart-total { /* TODO hide in twig and in scss */
+      display: none;
+    }
+  }
+}
+
+.header-cart-badge {
+  background-color: $ingos-color-orange;
+  color: $ingos-color-white;
+}

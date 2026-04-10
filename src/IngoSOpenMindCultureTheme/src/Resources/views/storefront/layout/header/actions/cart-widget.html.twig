@@ -1,0 +1,8 @@
+{% sw_extends '@Storefront/storefront/layout/header/actions/cart-widget.html.twig' %}
+
+{% block layout_header_actions_cart_widget %}
+    {{ parent() }}
+    {% if page.cart.lineItems|length > 0 %}
+        <span class="badge badge-primary header-cart-badge">{{ page.cart.lineItems|length }}</span>
+    {% endif %}
+{% endblock %}
