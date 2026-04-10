@@ -16,3 +16,17 @@
         </div>
     {% endif %}
 {% endblock %}
+
+{% block component_product_box_variant_characteristics %}
+    {% set hasVariantContent = variation is not empty %}
+    {% if not hasVariantContent %}
+        <div class="product-variant-characteristics empty"></div>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block component_product_box_name %}
+    {{ parent() }}
+    <span class="product-name-after"></span>
+{% endblock %}

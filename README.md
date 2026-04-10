@@ -426,3 +426,9 @@ Note that's not Twig's debug mode enabled in Drupal, Shopware 5, or other Symfon
 #### XDEBUG
 
 Note that there is still yet another debug vector known as XDEBUG that can be enabled in `docker-compose.yml` setting `XDEBUG_ENABLED=1` and `XDEBUG_REMOTE_HOST=host.docker.internal` (default value for Mac and Windows, or `XDEBUG_REMOTE_HOST=172.17.0.1` for Linux) and optionally `XDEBUG_CONFIG` which defaults to `idekey=PHPSTORM` and `PHP_IDE_CONFIG` defaults to `serverName=localhost` as documented by Dockware at https://docs.dockware.io/dockware-web/environment-variables 
+
+#### Dockware version
+
+To find out your Dockware version, you can check the container's log:
+
+- `docker logs theme`

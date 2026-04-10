@@ -301,9 +301,22 @@ body.frontend-home-page .filter-panel-item.filter-range.dropdown {
 }
 */
 
-.cms-element-product-listing-actions .col-md-auto:not(:has(*)),
-.cms-element-product-listing-actions .col-md-auto:empty {
+.product-variant-characteristics:empty,
+.product-variant-characteristics.empty {
+  min-height: unset;
+  height: 2px;
+}
+
+.cms-element-product-listing-actions .col-md-auto:empty,
+.cms-element-product-listing-actions .col-md-auto:not(:has(*)) {
   display: none;
+}
+
+.product-name-after {
+  display: block;
+  width: 70px;
+  height: 2px !important;
+  background-color: $sw-border-color-dimmed;
 }
 
 // todo refactor add custom class in twig
@@ -490,6 +503,11 @@ body.frontend-home-page .filter-panel-item.filter-range.dropdown {
 
   h1.search-headline + .cms-element-product-listing-wrapper {
     padding-top: 1rem;
+  }
+
+  body.is-act-home .cms-sections,
+  body.is-active-route-frontend-home-page .cms-sections {
+    margin-top: -20px;
   }
 
   // visually merge filters in one row, assuming there are not too many of them
