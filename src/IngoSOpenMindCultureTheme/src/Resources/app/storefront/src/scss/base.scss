@@ -234,7 +234,7 @@ body:not(.is-act-home):not(.frontend-home-page) .container-main {
 .footer-main > .container .footer-columns a,
 .footer-main > .container .footer-columns a:link,
 .footer-main > .container .footer-columns a:visited {
-  border: solid 1px $sw-border-color-dimmed;
+  border: solid 1px $ingos-border-color-dimmed;
   border-radius: $ingos-border-radius-default;
   color: $ingos-color-white;
   font-size: var(--bs-nav-link-font-size);
@@ -275,6 +275,8 @@ body:not(.is-act-home):not(.frontend-home-page) .container-main {
   display: none;
 }
 
+// don't rely on hiding in customized twig templates, also hide in JS pagination dom
+body.is-active-route-frontend-home-page .cms-element-product-listing-actions,
 body.is-act-home .filter-panel-item.filter-range.dropdown,
 body.is-active-route-frontend-home-page .filter-panel-item.filter-range.dropdown,
 body.frontend-home-page .filter-panel-item.filter-range.dropdown {
@@ -316,7 +318,7 @@ body.frontend-home-page .filter-panel-item.filter-range.dropdown {
   display: block;
   width: 70px;
   height: 2px !important;
-  background-color: $sw-border-color-dimmed;
+  background-color: $ingos-border-color-dimmed;
 }
 
 // todo refactor add custom class in twig
@@ -658,4 +660,86 @@ pre.ingos-code-syntax {
 
 .ingos-js-error {
   color: $ingos-syntax-red;
+}
+
+.pagination {
+  --bs-pagination-padding-x: 0;
+  --bs-pagination-padding-y: 0;
+  --bs-pagination-font-size: 1rem;
+  --bs-pagination-color: red;
+  --bs-pagination-bg: $ingos-border-color-lighter;
+  --bs-pagination-border-width: 0;
+  --bs-pagination-border-radius: 50%;
+  --bs-pagination-hover-color: $ingos-color-white;
+  --bs-pagination-hover-bg: $ingos-color-orange;
+  --bs-pagination-focus-color: var(--bs-link-hover-color);
+  --bs-pagination-focus-bg: var(--bs-pagination-hover-bg);
+  --bs-pagination-focus-box-shadow: none;
+  --bs-pagination-active-color: $sw-color-brand-primary;
+  --bs-pagination-active-bg: #transparent;
+  --bs-pagination-disabled-bg: transparent;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.pagination-nav {
+  padding: 35px 15px;
+  text-align: center;
+  border-radius: $ingos-border-radius-default;
+  background-color: $ingos-border-color-lighter;
+  width: 100%;
+}
+
+.pagination a.page-link {
+  width: 50px;
+  height: 50px;
+  padding-top: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background 0.3s ease, color 0.3s ease;
+  background-color: $ingos-color-white;
+  color: $sw-color-brand-primary;
+}
+
+.pagination a.page-link:hover {
+  background-color: $ingos-color-orange;
+  color: $ingos-color-white;
+}
+
+.pagination .page-item.active a.page-link,
+.pagination .page-item a.page-link[aria-disabled] {
+  background-color: transparent;
+  color: $sw-color-brand-primary;
+  width: auto;
+}
+
+.pagination .page-item:not(.active) a.page-link[aria-disabled] {
+  display: none;
+}
+
+.header-search-input {
+  border-radius: $ingos-border-radius-default;
+}
+
+.header-search-btn {
+  border-top-right-radius: $ingos-border-radius-default !important;
+  border-bottom-right-radius: $ingos-border-radius-default !important;
+}
+
+.header-search-btn {
+  background-color: $ingos-color-blueish-dark !important;
+}
+
+.header-search-btn:active,
+.header-search-btn:hover {
+  background-color: $ingos-color-orange !important;
+}
+
+.header-search-btn .icon,
+.header-search-btn:active,
+.header-search-btn:hover,
+.header-search-btn:hover .icon {
+  color: $ingos-color-white !important;
 }
