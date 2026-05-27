@@ -205,7 +205,7 @@ body.is-act-home .pos-0.cms-section-default > .cms-section-default.boxed,
 body.is-active-route-frontend-home-page .pos-0.cms-section-default > .cms-section-default.boxed,
 body.frontend-home-page .pos-0.cms-section-default > .cms-section-default.boxed {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
 }
 
 body:not(.is-active-route-frontend-home-page):not(.frontend-home-page) .container-main,
