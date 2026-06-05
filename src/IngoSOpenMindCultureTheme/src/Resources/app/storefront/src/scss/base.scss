@@ -213,6 +213,12 @@ body:not(.is-act-home):not(.frontend-home-page) .container-main {
   padding-top: 0
 }
 
+body.is-act-home .pos-0.cms-section-default .row > *,
+body.is-active-route-frontend-home-page .pos-0.cms-section-default .row > *,
+body.frontend-home-page .pos-0.cms-section-default .row > * {
+  margin-top: 0;
+}
+
 .footer-main > .container {
   display: flex;
   justify-content: center;
@@ -436,18 +442,6 @@ body.frontend-home-page .filter-panel-item.filter-range.dropdown {
 .footer-copyright-user {
   text-align: center;
 }
-
-.cms-sections > .cms-section.pos-0 > .cms-sections {
-  display: flex;
-  flex-direction: column-reverse;
-  margin-top: 20px;
-  // drüber/drunter verborgen (sichtbar mit margin-top: 100px sind weitere pagination (kann) und NameA-Z (soll runter)
-  // während darin als cms-block.pos-2 der Preis Filter (kann weg)
-  // und drin innerhalb cms-block.pos-3 ein cms-block-container mit Produkten und unterer Pagination
-  //
-  // ... aber mobil = ?
-}
-
 
 .filter-sort-container {
   border: solid 2px red;
