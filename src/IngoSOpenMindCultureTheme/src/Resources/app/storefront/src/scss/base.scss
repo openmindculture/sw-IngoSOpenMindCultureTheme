@@ -80,6 +80,10 @@ body {
   line-height: 32px;
 }
 
+main.content-main {
+  flex-grow: 0;
+}
+
 nav,
 .navbar-nav {
   font-family: $font-family-serif;
@@ -87,7 +91,7 @@ nav,
 
 nav,
 .navbar-nav,
-.product-detail-description-text,
+.product-detail-description-text
 {
   color: $sw-text-color;
   font-size: 16px;
@@ -206,6 +210,7 @@ body.is-active-route-frontend-home-page .pos-0.cms-section-default > .cms-sectio
 body.frontend-home-page .pos-0.cms-section-default > .cms-section-default.boxed {
   display: flex;
   flex-direction: column;
+  padding-top: 1rem;
 }
 
 body:not(.is-active-route-frontend-home-page):not(.frontend-home-page) .container-main,
@@ -491,6 +496,11 @@ body.frontend-home-page .filter-panel-item.filter-range.dropdown {
   body.is-active-route-frontend-navigation-page:not(.is-active-route-frontend-home-page):not(.is-active-route-frontend-search-page) .cms-block-product-listing,
   body.is-active-route-frontend-navigation-page:not(.is-active-route-frontend-home-page):not(.is-active-route-frontend-search-page) .cms-block-product-listing .cms-block-container {
     padding-top: 0 !important;
+  }
+
+  h1.header-logo-main {
+    line-height: 32px;
+    margin-bottom: 0;
   }
 
   h1.search-headline {

@@ -1,5 +1,14 @@
 {% sw_extends '@Storefront/storefront/layout/header/logo.html.twig' %}
 
+{% block layout_header_logo_inner %}
+    {% set tag = (controllerName|lower == 'navigation' and controllerAction|lower == 'home') ? 'h1' : 'div' %}
+    <{{ tag }} class="header-logo-main text-center">
+        {% block layout_header_logo_link %}
+            {{ parent() }}
+        {% endblock %}
+    </{{ tag }}>
+{% endblock %}
+
 {% block layout_header_logo_image %}
     <span class="ingos-header-logo-text d-block m-auto">
         {{ config('core.basicInformation.shopName') }}
