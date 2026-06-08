@@ -1,0 +1,20 @@
+{
+    "ingos": {
+        "openMindCultureTheme": {
+            "imprint": "Imprimer",
+            "imprintUrl": "https://www.open-mind-culture.org/439/impressum/",
+            "contact": "Contactez-nous",
+            "contactUrl": "https://www.open-mind-culture.org/439/impressum/#kontakt",
+            "privacy": "Protection des données",
+            "privacyUrl": "https://www.open-mind-culture.org/439/impressum/#datenschutz",
+            "accessibility": "Accessibilité",
+            "accessibilityUrl": "https://www.open-mind-culture.org/439/impressum/#barrierefreiheit",
+            "blog": "Blog",
+            "blogUrl": "https://www.open-mind-culture.org/",
+            "cartCrossSellersTitle": "Open Mind merch top ventes et recommandations",
+            "plpShortGrossTaxInformation": "TTC",
+            "plpShortNetTaxInformation": "HT",
+            "plpShortShippingInformation": "hors FDP"
+        }
+    }
+}
