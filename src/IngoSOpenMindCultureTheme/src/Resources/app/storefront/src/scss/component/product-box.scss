@@ -63,7 +63,8 @@
   text-align: center;
 }
 
-.cms-element-product-listing .btn-buy {
+.cms-element-product-listing .btn-buy,
+.cms-element-product-listing .btn-detail {
   position: absolute;
   right: -5px;
   top: 180px;
@@ -80,7 +81,9 @@
 }
 
 .cms-element-product-listing .btn-buy .icon,
-.cms-element-product-listing .btn-buy svg {
+.cms-element-product-listing .btn-detail .icon,
+.cms-element-product-listing .btn-buy svg,
+.cms-element-product-listing .btn-detail svg {
   color: $ingos-color-white;
   fill: $ingos-color-white;
   top: 0;

@@ -7,3 +7,11 @@
         {% sw_icon 'cart' %}
     </button>
 {% endblock %}
+
+{% block component_product_box_action_detail %}
+    <a class="btn btn-block btn-detail"
+            title="{{ 'listing.boxProductDetails'|trans|sw_sanitize }}"
+            aria-label="{{ 'listing.boxProductDetails'|trans|sw_sanitize }}">
+        {% sw_icon 'arrow-head-right' %}
+    </a>
+{% endblock %}
