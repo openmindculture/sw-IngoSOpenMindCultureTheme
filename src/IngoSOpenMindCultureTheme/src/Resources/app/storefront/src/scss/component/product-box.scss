@@ -43,7 +43,7 @@
 .cms-element-product-listing .product-price-info {
   position: absolute;
   left: 0;
-  top: 150px;
+  top: 145px;
   background: $ingos-color-white;
   color: $sw-color-brand-primary;
   font-family: $font-family-serif;
@@ -56,7 +56,10 @@
 .cms-element-product-listing .product-price-tax-link {
   // todo replace with shorter text
   max-width: 100px;
-  max-height: 20px;
+  max-height: 26px;
+  min-height: 22px;
+  font-size: 11px;
+  line-height: 1.125;
   text-overflow: ellipsis;
   overflow: hidden;
   display: block;
@@ -95,4 +98,8 @@
   .cms-block-image-text-cover .cms-row> :first-child {
     margin-bottom: 0;
   }
+}
+
+.cms-element-product-listing .product-price-tax-link span {
+  display: inline-block;
 }

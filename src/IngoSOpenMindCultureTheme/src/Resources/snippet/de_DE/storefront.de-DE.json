@@ -11,7 +11,10 @@
       "accessibilityUrl": "https://www.open-mind-culture.org/439/impressum/#barrierefreiheit",
       "blog": "Blog",
       "blogUrl": "https://www.open-mind-culture.org/",
-      "cartCrossSellersTitle": "Open Mind Merch Bestseller und Empfehlungen"
+      "cartCrossSellersTitle": "Open Mind Merch Bestseller und Empfehlungen",
+      "plpShortGrossTaxInformation": "inkl. MwSt.",
+      "plpShortNetTaxInformation": "exkl. MwSt.",
+      "plpShortShippingInformation": "zzgl. Versand"
     }
   }
 }
