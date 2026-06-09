@@ -319,6 +319,28 @@ Make a backup! Unassign the theme from the storefront sales channel and deactiva
 
 The process above is based on the documentation at https://docs.shopware.com/en/shopware-6-en/update-guides/updating-shopware and has sucessfully finished at least once to update to Shopware 6.7.8.2 on a managed enerspace web server.
 
+### Linting, Static Code Analysis
+
+On the host machine console, run
+
+- `composer run lint:all`
+
+Background:
+
+If you don't develop a Shopware 6 theme in PhpStorm, but in VS Code or another editor, you might need to run static code analysis manually.
+
+- `shopware-cli extension validate custom/plugins/IngoSOpenMindCultureTheme`
+- `./vendor/bin/phpstan analyze src/IngoSOpenMindCultureTheme/src`
+- `bin/console lint:twig custom/plugins/YourThemeName/src/Resources/views`
+etc. => preconfigured with composer and node (only to install eslint and stylelint with SCSS configuration)
+
+Adjust the path to shopware core in `phpstan.neon`, e.g.
+```
+parameters:
+    scanDirectories:
+        - %currentWorkingDirectory%/../Shopware-storefront-src
+```
+
 ### Miscellaneous Shopware 6 Tips and Notes
 
 - Consistent SCSS and CSS class name prefixing: use lowercased vendor id as css class name prefix to generate compact yet unique class names, e.g. `swag` (for Shopware AG) or `ingos` for `IngoS` but no need for a wordy preifx like `ingo-open-mind-culture-theme`.

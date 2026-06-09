@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "stylelint": "stylelint --config stylelint.config.mjs src/IngoSOpenMindCultureTheme/src/Resources/app/storefront/src/**/*.scss"
+  },
+  "devDependencies": {
+    "eslint": "^9.39.4",
+    "stylelint": "^17.13.0",
+    "stylelint-config-recommended-scss": "^17.0.1",
+    "stylelint-scss": "^7.2.0"
+  }
+}

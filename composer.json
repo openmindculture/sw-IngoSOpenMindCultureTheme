@@ -1,0 +1,19 @@
+{
+    "require-dev": {
+        "shopwarelabs/phpstan-shopware": "^0.2.2"
+    },
+    "scripts": {
+        "lint:php": "phpstan analyze src/IngoSOpenMindCultureTheme/src",
+        "lint:js": "eslint src/IngoSOpenMindCultureTheme/src/Resources/app/storefront/src",
+        "lint:scss": "npm run stylelint",
+        "lint:twig": "docker exec theme php bin/console lint:twig custom/plugins/IngoSOpenMindCultureTheme/src/Resources/views",
+        "lint:validate": "docker exec theme shopware-cli extension validate custom/plugins/IngoSOpenMindCultureTheme",
+        "lint:all": [
+            "@lint:php",
+            "@lint:js",
+            "@lint:scss",
+            "@lint:twig",
+            "@lint:validate"
+        ]
+    }
+}

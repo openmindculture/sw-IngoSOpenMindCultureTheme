@@ -28,10 +28,11 @@ readonly class CartCrosssellerSubscriber implements EventSubscriberInterface
 
     public function onCartLoaded(PageLoadedEvent $event): void
     {
+        /** @var \Shopware\Storefront\Page\Checkout\Cart\CheckoutCartPage $page */
         $page= $event->getPage();
         $cart = $page->getCart();
 
-        if (!$cart || $cart->getLineItems()->count() > 0) {
+        if ($cart->getLineItems()->count() > 0) {
             return;
         }
 
