@@ -17,7 +17,7 @@
   ],
   "script": [
     "@Storefront",
-    "app/storefront/dist/storefront/js/ingos-open-mind-culture-theme.js"
+    "app/storefront/dist/storefront/js/ingo-s-open-mind-culture-theme/ingo-s-open-mind-culture-theme.js"
   ],
   "asset": [
     "@Storefront",

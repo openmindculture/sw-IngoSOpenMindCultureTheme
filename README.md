@@ -33,9 +33,10 @@ Changes in theme code can be done via `composer.json`, `theme.json` configuratio
 
 Install and activate the theme in the localhost storefront as a live preview. Some changes, like modified content of existing twig template files, are effective immediately, or after clearing the cache and after browser reload.
 
-Changes in compiled asset sources, like SCSS code files, require recompilation
+Changes in compiled asset sources, like SCSS code files, require recompilation,
+changed JS also requires storefront building:
 
-`bin/console theme:compile && bin/console cache:clear`
+`bin/build-storefront.sh && bin/console theme:compile && bin/console cache:clear`
 
 before reloading the storefront in the browser.
 
