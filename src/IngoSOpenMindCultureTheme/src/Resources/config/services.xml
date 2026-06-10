@@ -6,7 +6,19 @@
     <services>
         <defaults autowire="true" autoconfigure="true" public="false"/>
 
-        <service id="IngoSOpenMindCultureTheme\Subscriber\CartCrosssellerSubscriber">
+        <service id="IngoSOpenMindCultureTheme\Service\CrossSellerProvider">
+            <argument type="service" id="Shopware\Core\Content\Product\SalesChannel\Listing\ProductListingLoader"/>
+        </service>
+
+        <service id="IngoSOpenMindCultureTheme\Subscriber\CartCrossSellerSubscriber">
+            <tag name="kernel.event_subscriber"/>
+        </service>
+        <service id="IngoSOpenMindCultureTheme\Subscriber\ErrorPageCrossSellerSubscriber">
+            <argument type="service" id="YourPlugin\Service\CrossSellerProvider"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+        <service id="IngoSOpenMindCultureTheme\Subscriber\SearchPageCrossSellerSubscriber">
+            <argument type="service" id="YourPlugin\Service\CrossSellerProvider"/>
             <tag name="kernel.event_subscriber"/>
         </service>
         <service id="IngoSOpenMindCultureTheme\Subscriber\ProductListingCategorySubscriber">

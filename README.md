@@ -78,6 +78,14 @@ and for linting Twig code:
 
   - `bin/console lint:twig custom/plugins/IngoSOpenMindCultureTheme/src/Resources/views/`
 
+  Prefer to use PhpStorm with Symfony and Shopware support. 
+
+  When not using PhpStorm, you might want to install Intelephense for VS Code and the Shopware Language Server. 
+  Intelephense is an editor engine that helps you write code, and PHP_CodeSniffer (phpcs) is a style checker that enforces layout.
+  To prevent false positive warnings directly after installation, Press Ctrl + Shift + P (or Cmd + Shift + P on Mac) to open the VS Code Command Palette.Type and select: Intelephense: Index workspace.Wait a few seconds for the status bar indexing to complete.
+
+  More false positives: if one file contains errors, other files requiring that code might show misleading warnings or inspection results like missing types.
+
 #### applying changes
 
 For SCSS changes to take effect, running:
