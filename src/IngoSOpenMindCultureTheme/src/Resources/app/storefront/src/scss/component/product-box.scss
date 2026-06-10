@@ -66,6 +66,8 @@
   text-align: center;
 }
 
+.checkout .btn-buy,
+.checkout .btn-detail,
 .cms-element-product-listing .btn-buy,
 .cms-element-product-listing .btn-detail {
   position: absolute;
@@ -84,9 +86,13 @@
   z-index: 2;
 }
 
+.checkout .btn-buy .icon,
 .cms-element-product-listing .btn-buy .icon,
+.checkout .btn-detail .icon,
 .cms-element-product-listing .btn-detail .icon,
+.checkout .btn-buy svg,
 .cms-element-product-listing .btn-buy svg,
+.checkout .btn-detail svg,
 .cms-element-product-listing .btn-detail svg {
   color: $ingos-color-white;
   fill: $ingos-color-white;

@@ -240,6 +240,21 @@ body.frontend-home-page .pos-0.cms-section-default .row > * {
   display: flex;
   justify-content: center;
   padding-bottom: 20px;
+
+  & > *:first-child {
+    padding-left: 0;
+  }
+  & > *:last-child {
+    padding-right: 0;
+  }
+  @include media-breakpoint-down(md) {
+    & > *:not(:first-child) {
+      padding-left: 5px;
+    }
+    &>*:not(:last-child) {
+      padding-right: 5px;
+    }
+  }
 }
 
 .footer-main > .container .footer-columns a,
@@ -284,6 +299,30 @@ body.frontend-home-page .pos-0.cms-section-default .row > * {
 // hide unused or irrelevant items
 .filter-panel-wrapper .filter-multi-select-manufacturer {
   display: none;
+}
+
+body.is-active-route-frontend-checkout-cart-page .content-main > .container,
+body.is-active-route-frontend-checkout-register-page .content-main > .container,
+body.is-active-route-frontend-search-page .content-main > .container {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+@include media-breakpoint-down(lg) {
+  body.is-active-route-frontend-checkout-cart-page .content-main >.container > .container-main,
+  body.is-active-route-frontend-checkout-register-page .content-main > .container > .container-main,
+  body.is-active-route-frontend-search-page .content-main > .container > .container-main {
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+}
+
+.cms-page.search-page {
+  padding-top: 20px;
+
+  .search-headline {
+      display: block; 
+  }
 }
 
 // don't rely on hiding in customized twig templates, also hide in JS pagination dom
@@ -772,4 +811,16 @@ pre.ingos-code-syntax {
 .header-cart-badge {
   background-color: $ingos-color-orange;
   color: $ingos-color-white;
+}
+
+@include media-breakpoint-up(md) {
+  .cart-main-header,
+  .crosssellers-title {
+    margin-top: 20px;
+  }
+}
+
+.line-item-label {
+  display: inline-block;
+  line-height: 1.5;
 }

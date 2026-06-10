@@ -4,10 +4,10 @@
     {{ parent() }}
     {% if page.cart.lineItems.count == 0 %}
         {% if page.cart.lineItems.count == 0 %}
-            <h2>{{ "ingos.openMindCultureTheme.cartCrossSellersTitle"|trans }}</h2>
+            <h2 class="crosssellers-title">{{ "ingos.openMindCultureTheme.cartCrossSellersTitle"|trans }}</h2>
             <div class="row">
                 {% for product in page.crossSellers %}
-                    <div class="col-6 col-md-4">
+                    <div class="crossseller col-6 col-md-4">
                         {% sw_include '@Storefront/storefront/component/product/card/box.html.twig' with {
                             product: product,
                             layout: 'standard'
