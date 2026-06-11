@@ -16,16 +16,26 @@ readonly class ErrorPageCrossSellerSubscriber implements EventSubscriberInterfac
     public static function getSubscribedEvents(): array
     {
         return [
-            ErrorPageLoadedEvent::class => 'onErrorPageLoaded',
+            GenericPageLoadedEvent::class => 'onErrorPageLoaded',
         ];
     }
 
-    public function onErrorPageLoaded(PageLoadedEvent $event): void
+    public function onErrorPageLoaded(GenericPageLoadedEvent $event): void
     {
         /** @var \Shopware\Storefront\Page\Checkout\Cart\CheckoutCartPage $page */
         $page= $event->getPage();
         
-        if (false) { // TODO is 404 page or empty search result
+        $request = $event->getRequest();
+
+        $exception = $request->attributes->get('exception')
+            ?? $request->attributes->get('_exception');
+
+        $statusCode = $request->attributes->get('_http_status_code');
+
+        if (
+            !$exception instanceof NotFoundHttpException
+            && $statusCode !== Response::HTTP_NOT_FOUND
+        ) {
             return;
         }
 
