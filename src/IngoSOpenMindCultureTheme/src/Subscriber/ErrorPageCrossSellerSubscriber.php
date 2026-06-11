@@ -2,8 +2,11 @@
 
 namespace IngoSOpenMindCultureTheme\Subscriber;
 
+use Shopware\Storefront\Page\Checkout\Cart\CheckoutCartPage;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Shopware\Storefront\Page\PageLoadedEvent;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Shopware\Storefront\Page\GenericPageLoadedEvent;
 use IngoSOpenMindCultureTheme\Service\CrossSellerProvider;
 
 readonly class ErrorPageCrossSellerSubscriber implements EventSubscriberInterface
@@ -22,7 +25,7 @@ readonly class ErrorPageCrossSellerSubscriber implements EventSubscriberInterfac
 
     public function onErrorPageLoaded(GenericPageLoadedEvent $event): void
     {
-        /** @var \Shopware\Storefront\Page\Checkout\Cart\CheckoutCartPage $page */
+        /** @var CheckoutCartPage $page */
         $page= $event->getPage();
         
         $request = $event->getRequest();
