@@ -20,7 +20,7 @@ readonly class ErrorPageCrossSellerSubscriber implements EventSubscriberInterfac
         ];
     }
 
-    public function onCartLoaded(PageLoadedEvent $event): void
+    public function onErrorPageLoaded(PageLoadedEvent $event): void
     {
         /** @var \Shopware\Storefront\Page\Checkout\Cart\CheckoutCartPage $page */
         $page= $event->getPage();
@@ -29,6 +29,6 @@ readonly class ErrorPageCrossSellerSubscriber implements EventSubscriberInterfac
             return;
         }
 
-        $page->assign(['crossSellers' => $this->loadCrossSellers($event->getSalesChannelContext())]);
+        $page->assign(['crossSellers' => $this->crossSellerProvider->getCrossSellerData($event->getSalesChannelContext())]);
     }
 }
