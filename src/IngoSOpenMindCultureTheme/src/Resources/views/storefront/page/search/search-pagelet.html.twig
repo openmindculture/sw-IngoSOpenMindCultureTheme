@@ -1,8 +1,8 @@
-{% sw_extends '@Storefront/storefront/page/checkout/cart/index.html.twig' %}
+{% sw_extends '@Storefront/storefront/page/search/search-pagelet.html.twig' %}
 
-{% block page_checkout_container %}
+{% block foo %}
     {{ parent() }}
-    {% if page.cart.lineItems.count == 0 %}
+    {% if page.listing.total == 0 %}
         {% sw_include '@Storefront/storefront/component/ingo-s-open-mind-culture-theme/cross-seller.html.twig' %}
     {% endif %}
 {% endblock %}
