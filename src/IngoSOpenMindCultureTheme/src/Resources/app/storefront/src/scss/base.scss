@@ -824,3 +824,20 @@ pre.ingos-code-syntax {
   display: inline-block;
   line-height: 1.5;
 }
+
+body.is-act-error .content-main {
+  margin-top: -50px;
+}
+
+body.is-act-error .content-main .container .container-main {
+  padding-top: 50px;
+}
+
+body.is-act-error .content-main .container .container-main h1 {
+  display: block;
+}
+
+body.is-act-error .btn-primary {
+  border-radius: $ingos-border-radius-default;
+  color: $ingos-color-white;
+}

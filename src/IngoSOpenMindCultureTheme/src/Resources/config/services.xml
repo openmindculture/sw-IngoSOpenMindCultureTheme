@@ -6,12 +6,12 @@
     <services>
         <defaults autowire="true" autoconfigure="true" public="false"/>
 
-        <service id="IngoSOpenMindCultureTheme\Subscriber\CartCrosssellerSubscriber">
-            <tag name="kernel.event_subscriber"/>
-        </service>
-        <service id="IngoSOpenMindCultureTheme\Subscriber\ProductListingCategorySubscriber">
-            <tag name="kernel.event_subscriber"/>
-        </service>
+        <service id="IngoSOpenMindCultureTheme\Service\CrossSellerProvider" />
+        <service id="IngoSOpenMindCultureTheme\Subscriber\CartCrossSellerSubscriber" />
+
+        <service id="IngoSOpenMindCultureTheme\Subscriber\ErrorPageCrossSellerSubscriber" />
+        <!-- <service id="IngoSOpenMindCultureTheme\Subscriber\SearchPageCrossSellerSubscriber" /> -->
+        <service id="IngoSOpenMindCultureTheme\Subscriber\ProductListingCategorySubscriber" />
     </services>
 
 </container>
