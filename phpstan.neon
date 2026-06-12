@@ -5,5 +5,6 @@ parameters:
     paths:
         - src
 
+    # Add this section to link your standalone theme to the Shopware installation
     scanDirectories:
         - %currentWorkingDirectory%/../Shopware-storefront-src

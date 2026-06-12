@@ -16,7 +16,6 @@ services:
       - web
     environment:
       - XDEBUG_ENABLED=0
-      - APP_ENV=prod
 
 volumes:
   src:

@@ -78,14 +78,6 @@ and for linting Twig code:
 
   - `bin/console lint:twig custom/plugins/IngoSOpenMindCultureTheme/src/Resources/views/`
 
-  Prefer to use PhpStorm with Symfony and Shopware support. 
-
-  When not using PhpStorm, you might want to install Intelephense for VS Code and the Shopware Language Server. 
-  Intelephense is an editor engine that helps you write code, and PHP_CodeSniffer (phpcs) is a style checker that enforces layout.
-  To prevent false positive warnings directly after installation, Press Ctrl + Shift + P (or Cmd + Shift + P on Mac) to open the VS Code Command Palette.Type and select: Intelephense: Index workspace.Wait a few seconds for the status bar indexing to complete.
-
-  More false positives: if one file contains errors, other files requiring that code might show misleading warnings or inspection results like missing types.
-
 #### applying changes
 
 For SCSS changes to take effect, running:
@@ -146,10 +138,6 @@ Adjust PHP versions so that the local host system, Dockware, and PhpStorm match 
 - `sudo apt update && sudo apt install -y php8.3-common php8.3-mysql php8.3-xml php8.3-curl php8.3-gd php8.3-intl php8.3-mbstring php8.3-opcache php8.3-zip php8.3-xsl php8.3-cli`
 
 Wait for indexing to finish. Invalidate (clear) caches and restart the IDE again, if necessary. 
-
-## Testing Error Pages in PROD APP ENVironment 
-
-To test error pages like 404 not found without triggering an exception stacktrace in Symfony Profiler, set the dockware environment as production by modifying the `docker-compose.yml` configuration and then restart the container using `docker compose up`. Note that this can wipe your previous data with Shopware demo content provided by the default dockware Setup, which might be fine for testing, anyway.
 
 ## Theme Export, Verification, and Deployment
 

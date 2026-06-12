@@ -562,22 +562,8 @@ body.is-active-route-frontend-navigation-page .cms-element-text > p:last-child {
     margin-top: -20px;
   }
 
-  body.is-act-error .content-main {
-    margin-top: -50px;
-  }
 
-  body.is-act-error .content-main .container .container-main {
-    padding-top: 50px;
-  }
 
-  body.is-act-error h1 {
-    display: block;
-  }
-
-  body.is-act-error .btn-primary {
-    color: white;
-    border-radius: $ingos-border-radius-default;
-  }
   // visually merge filters in one row, assuming there are not too many of them
   // TODO restrict to custom class names?
   /*
