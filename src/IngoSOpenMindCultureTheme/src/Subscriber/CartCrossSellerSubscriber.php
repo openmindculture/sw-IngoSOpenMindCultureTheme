@@ -12,7 +12,7 @@ readonly class CartCrossSellerSubscriber implements EventSubscriberInterface
 {
 
     public function __construct(
-        private readonly CrossSellerProvider $crossSellerProvider
+        private CrossSellerProvider $crossSellerProvider
     ) {}
 
 

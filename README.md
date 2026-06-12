@@ -147,6 +147,10 @@ Adjust PHP versions so that the local host system, Dockware, and PhpStorm match 
 
 Wait for indexing to finish. Invalidate (clear) caches and restart the IDE again, if necessary. 
 
+## Testing Error Pages in PROD APP ENVironment 
+
+To test error pages like 404 not found without triggering an exception stacktrace in Symfony Profiler, set the dockware environment as production by modifying the `docker-compose.yml` configuration and then restart the container using `docker compose up`. Note that this can wipe your previous data with Shopware demo content provided by the default dockware Setup, which might be fine for testing, anyway.
+
 ## Theme Export, Verification, and Deployment
 
 Build an exportable zip archive file to upload into a shop backend or Shopware's plugin marketplace.
