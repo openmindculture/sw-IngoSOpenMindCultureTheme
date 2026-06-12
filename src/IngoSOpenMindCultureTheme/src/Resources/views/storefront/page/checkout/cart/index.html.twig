@@ -3,18 +3,6 @@
 {% block page_checkout_container %}
     {{ parent() }}
     {% if page.cart.lineItems.count == 0 %}
-        {% if page.cart.lineItems.count == 0 %}
-            <h2 class="crosssellers-title">{{ "ingos.openMindCultureTheme.cartCrossSellersTitle"|trans }}</h2>
-            <div class="row">
-                {% for product in page.crossSellers %}
-                    <div class="crossseller col-6 col-md-4">
-                        {% sw_include '@Storefront/storefront/component/product/card/box.html.twig' with {
-                            product: product,
-                            layout: 'standard'
-                        } %}
-                    </div>
-                {% endfor %}
-            </div>
-        {% endif %}
+        {% sw_include '@Storefront/storefront/component/ingo-s-open-mind-culture-theme/cross-seller.twig' %}
     {% endif %}
 {% endblock %}

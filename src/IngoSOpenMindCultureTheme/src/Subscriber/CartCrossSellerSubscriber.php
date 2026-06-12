@@ -2,10 +2,10 @@
 
 namespace IngoSOpenMindCultureTheme\Subscriber;
 
+use Shopware\Storefront\Page\Checkout\Cart\CheckoutCartPage;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Shopware\Storefront\Page\PageLoadedEvent;
 use Shopware\Storefront\Page\Checkout\Cart\CheckoutCartPageLoadedEvent;
-use Shopware\Storefront\Page\Checkout\Offcanvas\OffcanvasCartPageLoadedEvent;
 use IngoSOpenMindCultureTheme\Service\CrossSellerProvider;
 
 readonly class CartCrossSellerSubscriber implements EventSubscriberInterface
@@ -20,13 +20,12 @@ readonly class CartCrossSellerSubscriber implements EventSubscriberInterface
     {
         return [
             CheckoutCartPageLoadedEvent::class  => 'onCartLoaded',
-            OffcanvasCartPageLoadedEvent::class => 'onCartLoaded',
         ];
     }
 
     public function onCartLoaded(PageLoadedEvent $event): void
     {
-        /** @var \Shopware\Storefront\Page\Checkout\Cart\CheckoutCartPage $page */
+        /** @var CheckoutCartPage $page */
         $page= $event->getPage();
         $cart = $page->getCart();
 

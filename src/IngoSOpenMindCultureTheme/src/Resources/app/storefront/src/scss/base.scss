@@ -578,11 +578,6 @@ body.is-active-route-frontend-navigation-page .cms-element-text > p:last-child {
     color: white;
     border-radius: $ingos-border-radius-default;
   }
-
-  body.is-act-error .content-main .container-main .content-main .container img {
-    display: none; // TODO remove in Twig or Erlebniswelten CMS configuration instead!
-  }
-
   // visually merge filters in one row, assuming there are not too many of them
   // TODO restrict to custom class names?
   /*

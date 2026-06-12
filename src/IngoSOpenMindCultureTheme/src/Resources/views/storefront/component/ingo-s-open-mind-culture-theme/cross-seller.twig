@@ -1,0 +1,15 @@
+{% if page.crossSellers %}
+    <div class="ingos-cross-seller">
+        <h2 class="crosssellers-title">{{ "ingos.openMindCultureTheme.cartCrossSellersTitle"|trans }}</h2>
+        <div class="row">
+            {% for product in page.crossSellers %}
+                <div class="crossseller col-6 col-md-4">
+                    {% sw_include '@Storefront/storefront/component/product/card/box.html.twig' with {
+                        product: product,
+                        layout: 'standard'
+                    } %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
