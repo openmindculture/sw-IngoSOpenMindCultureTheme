@@ -2,19 +2,22 @@
   "ingos": {
     "openMindCultureTheme": {
       "imprint": "Impressum",
-      "imprintUrl": "https://www.open-mind-culture.org/439/impressum/",
-      "contact": "Kontakt",
-      "contactUrl": "https://www.open-mind-culture.org/439/impressum/#kontakt",
+      "imprintUrl": "https://shop.open-mind-culture.org/legal-imprint",
+      "paymentShipping": "Zahlung/Versand",
+      "paymentShippingUrl": "https://shop.open-mind-culture.org/legal-payment-shipping",
       "privacy": "Datenschutz",
-      "privacyUrl": "https://www.open-mind-culture.org/439/impressum/#datenschutz",
-      "accessibility": "Barrierefreiheit",
-      "accessibilityUrl": "https://www.open-mind-culture.org/439/impressum/#barrierefreiheit",
+      "privacyUrl": "https://shop.open-mind-culture.org/legal-privacy",
+      "withdrawal": "Widerruf",
+      "withdrawalUrl": "https://shop.open-mind-culture.org/legal-withdrawal",
       "blog": "Blog",
       "blogUrl": "https://www.open-mind-culture.org/",
       "cartCrossSellersTitle": "Bestseller und Empfehlungen",
       "plpShortGrossTaxInformation": "inkl. MwSt.",
       "plpShortNetTaxInformation": "exkl. MwSt.",
       "plpShortShippingInformation": "zzgl. Versand"
+    },
+    "checkout": {
+      "shippingCostsLink": "https://shop.open-mind-culture.org/legal-payment-shipping"
     }
   }
 }

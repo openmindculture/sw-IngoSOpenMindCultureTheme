@@ -6,13 +6,30 @@
 
         {{ parent() }}
         <div class="has-borderless-links">
-            <a href="{{ "ingos.openMindCultureTheme.contactUrl"|trans }}">{{ "ingos.openMindCultureTheme.contact"|trans }}</a> |
+
             <a href="{{ "ingos.openMindCultureTheme.imprintUrl"|trans }}">{{ "ingos.openMindCultureTheme.imprint"|trans }}</a> |
+            <a href="{{ "ingos.openMindCultureTheme.paymentShippingUrl"|trans }}">{{ "ingos.openMindCultureTheme.paymentShipping"|trans }}</a> |
+            <a href="{{ "ingos.openMindCultureTheme.withdrawalUrl"|trans }}">{{ "ingos.openMindCultureTheme.withdrawal"|trans }}</a> |
             <a href="{{ "ingos.openMindCultureTheme.privacyUrl"|trans }}">{{ "ingos.openMindCultureTheme.privacy"|trans }}</a> |
-            <a href="{{ "ingos.openMindCultureTheme.accessibilityUrl"|trans }}">{{ "ingos.openMindCultureTheme.accessibility"|trans }}</a> |
             <a href="{{ "ingos.openMindCultureTheme.blogUrl"|trans }}">{{ "ingos.openMindCultureTheme.blog"|trans }}</a>
         </div>
     </div>
+{% endblock %}
+
+{% block layout_footer_vat %}
+    {% set cmsPath = 'frontend.cms.page.full' %}
+    {% if showVatNotice or showVatNotice is not defined %}
+        <div class="footer-vat">
+            {% set shippingSnippetKey = context.taxState == 'gross' ? 'footer.includeVatTextPage' : 'footer.excludeVatTextPage' %}
+            {% set shippingUrl = "ingos.openMindCultureTheme.paymentShippingUrl"|trans %}
+            <p>
+                {{ shippingSnippetKey|trans({
+                    '%url%': shippingUrl,
+                    '%star%': ''
+                })|raw }}
+            </p>
+        </div>
+    {% endif %}
 {% endblock %}
 
 {% block layout_footer_copyright %}
