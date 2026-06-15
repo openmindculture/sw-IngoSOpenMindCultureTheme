@@ -67,8 +67,10 @@
 }
 
 .checkout .btn-buy,
-.checkout .btn-detail,
 .cms-element-product-listing .btn-buy,
+.ingos-cross-seller .btn-buy,
+.ingos-cross-seller .btn-detail,
+.checkout .btn-detail,
 .cms-element-product-listing .btn-detail {
   position: absolute;
   right: -5px;
@@ -88,12 +90,16 @@
 
 .checkout .btn-buy .icon,
 .cms-element-product-listing .btn-buy .icon,
+.ingos-cross-seller .btn-buy .icon,
 .checkout .btn-detail .icon,
 .cms-element-product-listing .btn-detail .icon,
+.ingos-cross-seller .btn-detail .icon,
 .checkout .btn-buy svg,
 .cms-element-product-listing .btn-buy svg,
+.ingos-cross-seller .btn-buy svg,
 .checkout .btn-detail svg,
-.cms-element-product-listing .btn-detail svg {
+.cms-element-product-listing .btn-detail svg,
+.ingos-cross-seller .btn-detail svg {
   color: $ingos-color-white;
   fill: $ingos-color-white;
   top: 0;

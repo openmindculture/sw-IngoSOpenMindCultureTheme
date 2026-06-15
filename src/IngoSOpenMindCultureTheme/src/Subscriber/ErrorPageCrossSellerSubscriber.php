@@ -3,7 +3,6 @@
 namespace IngoSOpenMindCultureTheme\Subscriber;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Shopware\Storefront\Page\Error\ErrorPageLoadedEvent;
 use IngoSOpenMindCultureTheme\Service\CrossSellerProvider;
 
@@ -23,12 +22,6 @@ readonly class ErrorPageCrossSellerSubscriber implements EventSubscriberInterfac
 
     public function onErrorPageLoaded(ErrorPageLoadedEvent $event): void
     {
-
-        $exception = $event->getException();
-        if (!$exception instanceof NotFoundHttpException) {
-            return;
-        }
-
         $page= $event->getPage();
         $page->assign(['crossSellers' => $this->crossSellerProvider->getCrossSellerData($event->getSalesChannelContext())]);
     }

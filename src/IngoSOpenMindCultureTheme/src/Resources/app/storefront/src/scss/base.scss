@@ -309,6 +309,7 @@ body.is-active-route-frontend-search-page .content-main > .container {
   padding-left: 0;
 }
 
+body.is-act-search .ingos-cross-seller,
 body.is-act-loginpage .content-main>.container>.container-main {
   padding-right: 20px;
   padding-left: 20px;
@@ -323,10 +324,12 @@ body.is-act-loginpage .content-main>.container>.container-main {
     }
 }
 
+body.is-ctl-product .container-main,
+body.is-act-index .container-main,
 body.is-act-error .content-main,
 body.is-act-loginpage .account-register, 
-.cms-page.search-page {
-  padding-top: 20px;
+body.is-act-search .cms-page.search-page {
+  padding-top: 20px !important; // override !important core styles
 
   h1,
   .search-headline {

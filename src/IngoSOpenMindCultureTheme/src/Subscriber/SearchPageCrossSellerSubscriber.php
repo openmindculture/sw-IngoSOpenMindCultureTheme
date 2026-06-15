@@ -23,6 +23,6 @@ readonly class SearchPageCrossSellerSubscriber implements EventSubscriberInterfa
     public function onPageLoaded(SearchPageLoadedEvent $event): void
     {
         $page= $event->getPage();
-        $page->assign(['crossSellers' => $this->loadCrossSellers($event->getSalesChannelContext())]);
+        $page->assign(['crossSellers' => $this->crossSellerProvider->getCrossSellerData($event->getSalesChannelContext())]);
     }
 }

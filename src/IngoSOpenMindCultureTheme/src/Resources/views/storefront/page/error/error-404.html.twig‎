@@ -14,5 +14,5 @@
             </div>
         {% endblock %}
     </div>
-    {% sw_include '@Storefront/storefront/component/ingo-s-open-mind-culture-theme/cross-seller.twig' %}
+    {% sw_include '@Storefront/storefront/component/ingo-s-open-mind-culture-theme/cross-seller.html.twig' %}
 {% endblock %}

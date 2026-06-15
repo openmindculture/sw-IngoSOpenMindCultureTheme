@@ -1,4 +1,5 @@
 <div class="ingos-cross-seller">
+    {% if page.crossSellers is not empty %}
     <h2 class="crosssellers-title">{{ "ingos.openMindCultureTheme.cartCrossSellersTitle"|trans }}</h2>
     <div class="row">
         {% for product in page.crossSellers %}
@@ -10,4 +11,5 @@
             </div>
         {% endfor %}
     </div>
+    {% endif %}
 </div>

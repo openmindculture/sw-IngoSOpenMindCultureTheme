@@ -10,7 +10,7 @@
         <service id="IngoSOpenMindCultureTheme\Subscriber\CartCrossSellerSubscriber" />
 
         <service id="IngoSOpenMindCultureTheme\Subscriber\ErrorPageCrossSellerSubscriber" />
-        <!-- <service id="IngoSOpenMindCultureTheme\Subscriber\SearchPageCrossSellerSubscriber" /> -->
+        <service id="IngoSOpenMindCultureTheme\Subscriber\SearchPageCrossSellerSubscriber" />
         <service id="IngoSOpenMindCultureTheme\Subscriber\ProductListingCategorySubscriber" />
     </services>
 

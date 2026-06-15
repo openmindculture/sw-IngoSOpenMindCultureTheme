@@ -1,6 +1,6 @@
 {% sw_extends '@Storefront/storefront/page/search/search-pagelet.html.twig' %}
 
-{% block foo %}
+{% block element_product_listing_wrapper %}
     {{ parent() }}
     {% if page.listing.total == 0 %}
         {% sw_include '@Storefront/storefront/component/ingo-s-open-mind-culture-theme/cross-seller.html.twig' %}
