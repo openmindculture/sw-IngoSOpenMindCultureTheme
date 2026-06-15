@@ -301,11 +301,17 @@ body.frontend-home-page .pos-0.cms-section-default .row > * {
   display: none;
 }
 
+body.is-act-loginpage .content-main>.container,
 body.is-active-route-frontend-checkout-cart-page .content-main > .container,
 body.is-active-route-frontend-checkout-register-page .content-main > .container,
 body.is-active-route-frontend-search-page .content-main > .container {
   padding-right: 0;
   padding-left: 0;
+}
+
+body.is-act-loginpage .content-main>.container>.container-main {
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
 @include media-breakpoint-down(lg) {
@@ -317,9 +323,12 @@ body.is-active-route-frontend-search-page .content-main > .container {
     }
 }
 
+body.is-act-error .content-main,
+body.is-act-loginpage .account-register, 
 .cms-page.search-page {
   padding-top: 20px;
 
+  h1,
   .search-headline {
       display: block; 
   }
@@ -561,26 +570,6 @@ body.is-active-route-frontend-navigation-page .cms-element-text > p:last-child {
   body.is-active-route-frontend-home-page .cms-sections {
     margin-top: -20px;
   }
-
-
-
-  // visually merge filters in one row, assuming there are not too many of them
-  // TODO restrict to custom class names?
-  /*
-  .cms-section.pos-0 {
-    position: relative;
-  }
-  .cms-section.pos-0 > :empty {
-    display: none;
-  }
-  .cms-block-product-listing.position-relative:not(.pos-0) {
-    position: absolute;
-    top: 0;
-  }
-  .cms-block-product-listing.position-relative:not(.pos-0) .cms-block-container {
-    padding-top: 0 !important;
-  }
-  */
 
   .container-main .checkout {
     padding: 20px 20px 0 20px;
@@ -837,7 +826,13 @@ body.is-act-error .content-main .container .container-main h1 {
   display: block;
 }
 
-body.is-act-error .btn-primary {
+.btn.btn-primary {
   border-radius: $ingos-border-radius-default;
+  background-color: $ingos-color-blueish-dark;
+  color: $ingos-color-white;
+}
+
+.btn.btn-primary:hover {
+  background-color: $ingos-color-orange;
   color: $ingos-color-white;
 }
