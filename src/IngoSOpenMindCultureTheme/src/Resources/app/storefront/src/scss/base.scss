@@ -839,3 +839,7 @@ body.is-act-error .content-main .container .container-main h1 {
   background-color: $ingos-color-orange;
   color: $ingos-color-white;
 }
+
+.cookie-permission-container {
+  --bs-focus-ring-color: silver;
+}
