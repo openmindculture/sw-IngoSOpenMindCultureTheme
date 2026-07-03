@@ -232,14 +232,14 @@ body.frontend-home-page .pos-0.cms-section-default .row > * {
   color: $ingos-color-white;
   font-family: $font-family-serif;
   font-size: 1rem;
-  padding-bottom: 50px;
+  padding-bottom: 1rem;
 }
 
 .footer-main > .container .footer-columns {
   margin: 0;
   display: flex;
   justify-content: center;
-  padding-bottom: 20px;
+  padding-bottom: 1rem;
 
   & > *:first-child {
     padding-left: 0;
@@ -584,7 +584,7 @@ body.is-active-route-frontend-navigation-page .cms-element-text > p:last-child {
 }
 
 .ingos-footer-navigation-wrapper {
-  padding-top: 50px;
+  padding-top: 2rem;
 }
 
 .footer-main .list-unstyled:empty {
