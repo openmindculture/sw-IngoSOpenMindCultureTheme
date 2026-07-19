@@ -301,6 +301,7 @@ Make a backup! Unassign the theme from the storefront sales channel and deactiva
 #### Shopware 6 Platform Update using bin/console
 
 - make a backup
+- `bin/console sales-channel:maintenance:enable --all`
 - `bin/console theme:change #` remove/reassign default sales channel theme assignment (0 to 0)
 - `bin/console plugin:deactivate` ... (each one)
 - `bin/console cache:clear`
@@ -314,6 +315,7 @@ Make a backup! Unassign the theme from the storefront sales channel and deactiva
 - `bin/console cache:clear`
 - `bin/console plugin:activate` ... reactivate all extensions
 - `bin/console theme:change #` reassign custom theme to sales channel
+- `bin/console sales-channel:maintenance:disable --all`
 - `bin/console cache:clear`
 
 (*) check the Shopware core platform template source code on GitHub 
