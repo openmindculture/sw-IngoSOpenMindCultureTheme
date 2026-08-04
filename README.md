@@ -22,6 +22,13 @@ Layouts, products and media (images) for the Open Mind Culture shop are stored i
 
 Changes in theme code can be done via `composer.json`, `theme.json` configuration, overriding global variables or custom properties in `overrides.scss` or an imported `abstract/variables` and SCSS styling in `base.scss`. When overriding themes, prefer higher level components said to be less likely to change, use `sw_extends` to extend the original file and only override the blocks that need to change. Prefer adding wrappers or additional code and include the original `{{ parent() }}` instead of copying storefront platform code preventing upcoming Shopware core updates.
 
+#### Control Cross Sellers and Front Page Products
+
+FAQ: Shopware 6 storefront sales channel front page is configured to manual product selection with no products selected according to the backend in Catalogues -> Categories, but however I can see products on the front page and newly created products appear there, but I forgot where I really configured that and how to change the ordering?
+
+In Settings -> Commerce -> Products there are Default sorting and secondary sorting parameters options like A-Z or newest first. The Open Mind Culture demo shop was initially configured to default to ascending alphabetic sorting from A-Z with numbers coming even before that.
+
+
 ### Social Media and SEO Meta Data
 
 - Merchants must use category description to enter arbitrary HTML **and `<h1>`** headings
@@ -302,19 +309,19 @@ Make a backup! Unassign the theme from the storefront sales channel and deactiva
 
 - make a backup
 - `bin/console sales-channel:maintenance:enable --all`
-- `bin/console theme:change #` remove/reassign default sales channel theme assignment (0 to 0)
+- `bin/console theme:change` # remove/reassign default sales channel theme assignment (0 to 0)
 - `bin/console plugin:deactivate` ... (each one)
 - `bin/console cache:clear`
 - `bin/console system:update:prepare`
-- `vi composer.json #` update platform core or reset to `~v6.7.0` (*)
+- `vi composer.json` # update platform core or reset to `~v6.7.0` (*)
 - `composer update`
   - or more specifically
     - `composer update shopware/core shopware/administration shopware/storefront shopware/elasticsearch`
     - `composer update "shopware/*" --with-all-dependencies`
-- `bin/console system:update:finish #` runs migrations
+- `bin/console system:update:finish` # runs migrations
 - `bin/console cache:clear`
 - `bin/console plugin:activate` ... reactivate all extensions
-- `bin/console theme:change #` reassign custom theme to sales channel
+- `bin/console theme:change` # reassign custom theme to sales channel
 - `bin/console sales-channel:maintenance:disable --all`
 - `bin/console cache:clear`
 
@@ -362,6 +369,12 @@ parameters:
 The safest and most effective measures proven and recommended to improve frontend web performance.
 
 Ensure production mode when compiling and strip unused default JavaScript and SCSS cod to unregister unused resources.
+
+##### Payments: Shopware Payments vs. other payments
+
+When the classic PayPal payment plugin (SwagPayPal: "PayPal-Produkte für Shopware 6") is installed, there are two different options for PayPal payments, as there is now a new built-in "PayPal | Shopware Payments" with a distinct settings page. Make sure to activate and configure PayPal consistently!
+
+If you don't see your professional PayPal merchant login information in your browser, try if you eventually stored in another alternative browser, like Chromium vs. Firefox.
 
 ##### Performance by Default since Shopware 6.7
 
