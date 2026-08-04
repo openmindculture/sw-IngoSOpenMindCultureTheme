@@ -228,7 +228,7 @@ body.frontend-home-page .pos-0.cms-section-default .row > * {
   margin-top: 0;
 }
 
-.footer-main > .container {
+body:not(.is-active-route-frontend-maintenance-page) .footer-main > .container {
   display: flex;
   justify-content: center;
   background-color: $ingos-color-background-black;
