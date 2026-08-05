@@ -376,6 +376,10 @@ When the classic PayPal payment plugin (SwagPayPal: "PayPal-Produkte für Shopwa
 
 If you don't see your professional PayPal merchant login information in your browser, try if you eventually stored in another alternative browser, like Chromium vs. Firefox.
 
+Also don't forget to check your dedicated business email address for a specific online shop, especially when you only used it in webmail during shop setup.
+
+Likewise, there is a classic Stripe _plugin_ and a newer Stripe _app_. Use the latter!
+
 ##### Performance by Default since Shopware 6.7
 
 The PluginManager now determines if the selector from `register()` is present in the current document, and only if it is will the JS plugin be fetched GitHub — meaning manual deregister() calls are largely redundant in 6.6+, because plugins that have no matching DOM elements simply won't be downloaded at all. Shopware 6.7 Replaces Webpack with Vite, further reducing JS and CSS payloads by about 25% compared to earlier Shopware 6 webpack builds.
