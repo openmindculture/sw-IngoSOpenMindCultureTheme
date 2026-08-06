@@ -215,6 +215,14 @@ body.fasto-reader-mode article p {
   box-shadow: -1px 0px 16px 0px rgba(0, 0, 0, 0.07);
 }
 
+// TODO review and properly fix error page flashbags alert #8
+.flashbags.container > .alert {
+  max-width: 1060px;
+  width: min(100%, 1060px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .nav-main,
 .container-main {
   clip-path: inset(0 -20px 0 -20px);
@@ -839,7 +847,8 @@ pre.ingos-code-syntax {
   line-height: 1.5;
 }
 
-body.is-act-error .content-main {
+// TODO whatever I made these rules for, are they still relevant at all?
+body.is-act-error .content-main:has(.container-main):not(:has(.flashbags.container)) {
   margin-top: -50px;
 }
 
@@ -849,6 +858,9 @@ body.is-act-error .content-main .container .container-main {
 
 body.is-act-error .content-main .container .container-main h1 {
   display: block;
+}
+
+body.is-act-error .content-main:has(.flashbags.container) {
 }
 
 .btn.btn-primary {
