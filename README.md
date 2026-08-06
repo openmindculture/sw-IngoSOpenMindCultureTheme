@@ -378,7 +378,16 @@ If you don't see your professional PayPal merchant login information in your bro
 
 Also don't forget to check your dedicated business email address for a specific online shop, especially when you only used it in webmail during shop setup.
 
-Likewise, there is a classic Stripe _plugin_ and a newer Stripe _app_. Use the latter!
+Likewise, there is a classic Stripe _plugin_ and a newer Stripe _app_. Use the latter! When searching for "stripe" in the extension store the visual search results might be truncated so that both variations are shown as "Stripe Payments for Shop..."
+
+Further Stripe payments troubleshooting:
+
+In the administration everything looks fine and on the checkout page we can see and even select the payment method, sorry I wrote wrong, there IS (yes) "Kreditkarte (via Stripe)" in the checkout but still when the customer pay then the error message Die gewählte Zahlungsart konnte nicht gefunden werden.
+
+- Test: Set the Stripe payment method's availability rule to Always valid.
+- Customer session / cached checkout: log out completely before testing again!
+
+Disable PayPal buttons on the product detail page is a UX/UI recommendation to prevent layout shift when those buttons get inserted dynamically but also to make customers see the cart, continue shopping, and see upselling product suggestions instead of allowing them to go to PayPal and thus away from the shop. 
 
 ##### Performance by Default since Shopware 6.7
 
