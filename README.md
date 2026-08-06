@@ -2,7 +2,7 @@
 
 ## sw-IngoSOpenMindCultureTheme
 
-A Shopware 6 theme used for my Open Mind Culture shop to match the existing theme of the [Open Mind Culture blog](https://www.open-mind-culture.org) to experiment and showcase frontend customization possibilities while maintaining performance, sustainability, SEO, and accessibility.
+A Shopware 6 theme used for my Open Mind Culture shop to make a [live production demo merch shop at shop.open-mind-culture.org](https://shop.open-mind-culture.org/) match the existing theme of the [Open Mind Culture blog](https://www.open-mind-culture.org/) to experiment and showcase frontend customization possibilities while maintaining performance, sustainability, SEO, and accessibility.
 
 Theme style and layout are inspired by the Open Mind Culture WordPress blog and its modified fasto theme. This is a work in progress. This theme project might serve as a blueprint for future Shopware 6 themes. No warranty. License: proprietary.
 
