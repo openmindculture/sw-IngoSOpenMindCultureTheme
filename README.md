@@ -419,7 +419,21 @@ Layout templates don't just define the layout only, but they contain the content
 
 Not every kind of layout template CMS content entity can be used everywhere, like the service pages that are linked as popups during checkout must be "Shop Pages" CMS layout templates. When we want to copy and paste content between those templates, the pasted content might not retain the original formatting, even when copy-pasting within the very same Shopware instance. So, how exactly do I switch the shopping expriences cms wysiwyg editor to html to work around broken rich text copy-and-pasting in Shopware 6.7?
 
+##### E-Mail Font Size and Style
 
+E-Mail templates are database objects, configurable in admin settings, like the "footer" template in header and footer templates section, that does in fact allow to add and edit code both for header an footer.
+
+However, the HTML mail also contains a CSS style block that cannot be edited it in the header footer template, but as twig template code.
+
+Due to the lack of proper best practice documentation, we can still add a wrapper div with inline styles using the header and footer fields in the admin settings and only specifiy a bigger font size there pragmatically. Alternatively, add just another style element to the header only to prevent HTML fragments being discarded as not well-formed potentially causing the whole mailing process to fail silently. Style example:
+
+```html
+<style>
+    * { font-size: 16px !important; }
+</style>
+```
+
+Don't forget to do this is in all languages and verify that mails are still sent (and not silently discarded due to code validation errors). Check the error log as well, usually something like `var/log/prod-2026-08-07.log`.
 
 ##### Performance by Default since Shopware 6.7
 
