@@ -11,6 +11,7 @@
  * ---------- */
 @import 'component/product-box';
 @import 'pagelet/header';
+@import 'paypal-workaround.scss';
 @import 'todo';
 
 /**
@@ -120,6 +121,12 @@ h1,
   font-style: normal;
   text-decoration: none;
   display: inline;
+}
+
+body.is-active-route-frontend-checkout-cart-page h1,
+body.is-active-route-frontend-checkout-register-page h1,
+body.is-active-route-frontend-checkout-finish-page h1 {
+    display: block;
 }
 
 .cms-element-text h1 {

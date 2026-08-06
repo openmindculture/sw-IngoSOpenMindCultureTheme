@@ -389,6 +389,38 @@ In the administration everything looks fine and on the checkout page we can see 
 
 Disable PayPal buttons on the product detail page is a UX/UI recommendation to prevent layout shift when those buttons get inserted dynamically but also to make customers see the cart, continue shopping, and see upselling product suggestions instead of allowing them to go to PayPal and thus away from the shop. 
 
+In Settings -> PayPal -> Storefront Presentation tab, disabling every toggle that you can is still not enough to get rid of every PayPal distraction. Additionally, check Settings -> Payment methods, the PayPal payment details linked from there, and the sales channel payments. Possible workaround, as suggested by the official Shopware AI: re-enable Express and PayPal checkout on off-canvas cart briefly in the PayPal settings, uncheck Off-Canvas Cart in the  storefront presentation tab, then disable Express Checkout again, save and clear cache.
+
+Alternatively, using Shopware-CLI or rather bin/console,
+explicitly adding the visual storefront's sales channel ID,
+e.g.  --salesChannelId=019bf9d324b37332a41d2617fe7e0f35 for the initial open-mind-culture.org installation,
+if setting the global default fallbacks to false is not enough.
+
+```
+bin/console system:config:set SwagPayPal.settings.installmentBannerOffCanvasCartEnabled false  --salesChannelId=019bf9d324b37332a41d2617fe7e0f35
+bin/console system:config:set SwagPayPal.settings.installmentBannerCartEnabled false --salesChannelId=019bf9d324b37332a41d2617fe7e0f35
+bin/console system:config:set SwagPayPal.settings.installmentBannerDetailPageEnabled false --salesChannelId=019bf9d324b37332a41d2617fe7e0f35
+bin/console system:config:set SwagPayPal.settings.installmentBannerFooterEnabled false --salesChannelId=019bf9d324b37332a41d2617fe7e0f35
+bin/console system:config:set SwagPayPal.settings.installmentBannerLoginPageEnabled false --salesChannelId=019bf9d324b37332a41d2617fe7e0f35
+bin/console cache:clear
+```
+
+Eventual bugs like https://github.com/shopware/SwagPayPal/issues/677 report that PayPal may show elements that are set be disabled.
+
+Twig template and CSS workaround:
+
+override `offcanvas-cart.html.twig` to empty the blocks. Add a display rule in SCSS to catch what that might have overlooked.
+
+##### Shopping Experiences CMS and Service Pages
+
+Service pages like TOS, privacy and delivery info etc. are assigned as category landingpages and/or in the settings.
+
+Layout templates don't just define the layout only, but they contain the content, too.
+
+Not every kind of layout template CMS content entity can be used everywhere, like the service pages that are linked as popups during checkout must be "Shop Pages" CMS layout templates. When we want to copy and paste content between those templates, the pasted content might not retain the original formatting, even when copy-pasting within the very same Shopware instance. So, how exactly do I switch the shopping expriences cms wysiwyg editor to html to work around broken rich text copy-and-pasting in Shopware 6.7?
+
+
+
 ##### Performance by Default since Shopware 6.7
 
 The PluginManager now determines if the selector from `register()` is present in the current document, and only if it is will the JS plugin be fetched GitHub — meaning manual deregister() calls are largely redundant in 6.6+, because plugins that have no matching DOM elements simply won't be downloaded at all. Shopware 6.7 Replaces Webpack with Vite, further reducing JS and CSS payloads by about 25% compared to earlier Shopware 6 webpack builds.
