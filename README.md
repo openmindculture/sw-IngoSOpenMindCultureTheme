@@ -450,7 +450,6 @@ In priority order, the proven highest-impact measures are:
 3. LCP-focused image optimisation — the hero image should be delivered as WebP/AVIF with fetchpriority="high" and <link rel="preload">, and TTFB should be under 200ms through optimised hosting and caching, with no render-blocking scripts in <head> before the LCP element.
 
 4. Upgrading to 6.6 or 6.7 — if still on 6.5 or earlier, the single most effective "frontend optimisation" is the version upgrade itself, since async JS loading is a platform feature, not something you can retrofit cleanly.
-4. Upgrading to 6.6 or 6.7 — if still on 6.5 or earlier, the single most effective "frontend optimisation" is the version upgrade itself, since async JS loading is a platform feature, not something you can retrofit cleanly.
 
 ##### Production Build
 
